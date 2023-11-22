@@ -11,6 +11,8 @@ public class PlayerLook : MonoBehaviour
     public float xSensitivity = 30f;
     public float ySensitivity = 30f;
 
+    public RaycastHit HitInfo { get; private set; }
+
     private void Start()
     {
         Cursor.visible = false;
@@ -27,5 +29,12 @@ public class PlayerLook : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+    }
+
+    private void Update()
+    {
+        Vector3 cameraDirection = cam.transform.forward;
+        Physics.Raycast(cam.transform.position, cameraDirection, out RaycastHit hitInfo, 20f);
+
     }
 }

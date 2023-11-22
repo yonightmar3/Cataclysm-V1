@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class cultistMover : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        Vector3 movement = new Vector3(0f, 0f, 1f);
+        transform.Translate(movement * 3 * Time.deltaTime);
+    }
+
+}
