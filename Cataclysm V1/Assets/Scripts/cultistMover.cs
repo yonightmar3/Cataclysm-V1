@@ -13,7 +13,7 @@ public class cultistMover : MonoBehaviour
     private void Update()
     {
         Vector3 movement = new Vector3(-1f, 0f, 0f);
-        transform.Translate(movement * 5 * Time.deltaTime);
+        transform.Translate(movement * 3 * Time.deltaTime);
     }
 
 }
