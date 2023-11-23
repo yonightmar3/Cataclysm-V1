@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class eventManager : MonoBehaviour
 {
-    private Animator animator;
-    public Camera cam;
+    public PlayerLook playerLookScript;
+
+    //public Camera cam;
     [SerializeField] private Animator secretDoor;
 
     //jail
     GameObject jailWall;
-    GameObject jailDoor;
     public GameObject jailCultist;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-
         //jail room
         jailWall = GameObject.Find("jailWall");
-        jailDoor = GameObject.Find("jailDoor");
 
 
     }
@@ -46,7 +43,26 @@ public class eventManager : MonoBehaviour
 
     private void Update()
     {
-        Vector3 cameraDirection = cam.transform.forward;
+        if (playerLookScript != null)
+        {
+            // Access the HitInfo property from the PlayerLook script
+            RaycastHit hitInfo = playerLookScript.HitInfo;
+
+            // Now you can use hitInfo in this script
+            if (hitInfo.collider != null)
+            {
+                // Do something with hitInfo
+                //Debug.Log("Hit object: " + hitInfo.collider.gameObject.name);
+                if (hitInfo.transform.gameObject.name == "jailTrigger3")
+                {
+                    jailCultist.SetActive(true);
+                }
+            }
+            //else Debug.Log(":(");
+        }
+
+        //WHEN RAYCAST
+        /*Vector3 cameraDirection = cam.transform.forward;
         Physics.Raycast(cam.transform.position, cameraDirection, out RaycastHit hitInfo, 20f);
         if (hitInfo.transform != null)
         {
@@ -56,19 +72,19 @@ public class eventManager : MonoBehaviour
                 Debug.Log("walking cultist");
                 jailCultist.SetActive(true);
             }
-        }
-            /* RaycastHit hitInfo = playerLook.HitInfo;
+        }*/
+        /* RaycastHit hitInfo = playerLook.HitInfo;
 
-             // Check if the raycast hit something
-             if (hitInfo.transform != null)
+         // Check if the raycast hit something
+         if (hitInfo.transform != null)
+         {
+             // Check if the hit object is the one you're looking for
+             if (hitInfo.transform.gameObject.name == "jailTrigger3")
              {
-                 // Check if the hit object is the one you're looking for
-                 if (hitInfo.transform.gameObject.name == "jailTrigger3")
-                 {
-                     Debug.Log("pauzica");
-                 }
-             }*/
-        }
+                 Debug.Log("pauzica");
+             }
+         }*/
+    }
 
 
 }
