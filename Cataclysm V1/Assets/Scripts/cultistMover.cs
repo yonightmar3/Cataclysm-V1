@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class cultistMover : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int speed = 5;
 
     private void Update()
     {
         Vector3 movement = new Vector3(-1f, 0f, 0f);
-        transform.Translate(movement * 3 * Time.deltaTime);
+        transform.Translate(movement * speed * Time.deltaTime);
     }
 
 }
