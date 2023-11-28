@@ -6,6 +6,11 @@ public class eventManager : MonoBehaviour
 {
     public PlayerLook playerLookScript;
 
+    //MAZE
+    public GameObject pillar1, pillar2, collapse2, collapse3;
+
+
+
     //public Camera cam;
     [SerializeField] private Animator secretDoor;
 
@@ -56,6 +61,13 @@ public class eventManager : MonoBehaviour
                 if (hitInfo.transform.gameObject.name == "jailTrigger3")
                 {
                     jailCultist.SetActive(true);
+                }
+                if (hitInfo.transform.gameObject.name == "mazeTrigger2")
+                {
+                    collapse2.SetActive(false);
+                    collapse3.SetActive(false);
+                    pillar1.SetActive(true);
+                    pillar2.SetActive(true);
                 }
             }
             //else Debug.Log(":(");
