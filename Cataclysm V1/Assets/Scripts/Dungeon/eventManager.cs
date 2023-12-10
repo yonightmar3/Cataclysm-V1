@@ -5,9 +5,14 @@ using UnityEngine;
 public class eventManager : MonoBehaviour
 {
     public PlayerLook playerLookScript;
-
+    //PUZZLE ROOM 1
+    private Vector3 librarySpawn = new Vector3(-14f, 1f, 70f);
+    public GameObject libraryWall;
     //MAZE
+    public GameObject player;
     public GameObject pillar1, pillar2, collapse2, collapse3;
+    public GameObject pickUpText;
+    private GameObject lookingAt;
 
 
 
@@ -56,6 +61,7 @@ public class eventManager : MonoBehaviour
             // Now you can use hitInfo in this script
             if (hitInfo.collider != null)
             {
+                lookingAt = hitInfo.transform.gameObject;
                 // Do something with hitInfo
                 //Debug.Log("Hit object: " + hitInfo.collider.gameObject.name);
                 if (hitInfo.transform.gameObject.name == "jailTrigger3")
@@ -69,6 +75,22 @@ public class eventManager : MonoBehaviour
                     pillar1.SetActive(true);
                     pillar2.SetActive(true);
                 }
+
+                //INTERACT
+                if (hitInfo.transform.gameObject.name == "libraryKey")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        lookingAt.SetActive(false);
+                        pickUpText.SetActive(false);
+                        libraryWall.SetActive(false);
+                        player.transform.position = librarySpawn;
+                        Debug.Log("player teleported");
+
+                    }
+                }
+                else pickUpText.SetActive(false);
             }
             //else Debug.Log(":(");
         }
