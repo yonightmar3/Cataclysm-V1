@@ -9,6 +9,14 @@ public class eventManager : MonoBehaviour
     private Vector3 librarySpawn = new Vector3(-14f, 1f, 70f);
     public GameObject libraryWall;
     private bool rune1 = false;
+    private bool rune2 = false;
+    private bool rune3 = false;
+    private bool rune4 = false;
+
+    [SerializeField] private Animator descendingDoor;
+    public GameObject puzzle1Door;
+
+
 
     //MAZE
     public GameObject player;
@@ -93,16 +101,16 @@ public class eventManager : MonoBehaviour
 
                     }
                 }
-                else if (hitInfo.transform.gameObject.name == "Pillar1")
+                else if (hitInfo.transform.gameObject.name == "Rune 1")
                 {
                     pickUpText.SetActive(true);
-                    //if (Input.GetKeyDown(KeyCode.E))
-                    //{
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
                         rune1 = true;
                         Debug.Log("Rune 1");
-                    //}  
-                }/*
-                if (hitInfo.transform.gameObject.name == "Rune2")
+                    }  
+                }
+                else if (hitInfo.transform.gameObject.name == "Rune 2")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -110,54 +118,62 @@ public class eventManager : MonoBehaviour
                         if (rune1 == true)
                         {
                             rune2 = true;
+                            Debug.Log("Rune 2");
                         }
                         else
                         {
                             rune1 = false;
+                            Debug.Log("Rune 2 WRONG");
                         }
                     }
                 }
-                if (hitInfo.transform.gameObject.name == "Rune3")
+                else if (hitInfo.transform.gameObject.name == "Rune 3")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         if (rune1 == true && rune2 == true)
                         {
+                            Debug.Log("Rune 3");
                             rune3 = true;
                         }
                         else
                         {
+                            Debug.Log("Rune 3 WRONG");
                             rune1 = false;
                             rune2 = false;
                         }
                     }
                 }
-                if (hitInfo.transform.gameObject.name == "Rune4")
+                else if (hitInfo.transform.gameObject.name == "Rune 4")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         if (rune1 == true && rune2 == true && rune3 == true)
                         {
+                            Debug.Log("Rune 4");
                             rune4 = true;
                         }
                         else
                         {
+                            Debug.Log("Rune 4 WRONG");
                             rune1 = false;
                             rune2 = false;
                             rune3 = false;
                         }
                     }
-                }*/
+                }
 
                 else pickUpText.SetActive(false);
             }
 
-            /*if (rune4 == true)
+            if (rune4 == true)
             {
                 Debug.Log("works");
-            }*/
+                descendingDoor.SetTrigger("puzzle1wallDescend");
+
+            }
             //else Debug.Log(":(");
         }
 
