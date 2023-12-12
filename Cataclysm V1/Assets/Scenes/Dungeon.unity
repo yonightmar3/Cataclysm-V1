@@ -4272,7 +4272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!154 &99069382
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -94334,15 +94334,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.17
+      value: 16.17
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.86
+      value: 7.8599997
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 91.02
+      value: 5.2699966
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -94390,11 +94390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9117458783368449111, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: xSensitivity
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9117458783368449111, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: ySensitivity
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
