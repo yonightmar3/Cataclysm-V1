@@ -24,6 +24,8 @@ public class eventManager : MonoBehaviour
     public GameObject pillar1, pillar2, collapse2, collapse3;
     public GameObject pickUpText;
     private GameObject lookingAt;
+    public GameObject collapse2Sound;
+    public AudioSource collapse3Sound;
 
 
 
@@ -81,6 +83,7 @@ public class eventManager : MonoBehaviour
                 if (hitInfo.transform.gameObject.name == "mazeTrigger2")
                 {
                     collapse2.SetActive(false);
+                    collapse2Sound.SetActive(true);
                     collapse3.SetActive(false);
                     pillar1.SetActive(true);
                     pillar2.SetActive(true);

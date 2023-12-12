@@ -17,7 +17,7 @@ public class footstepController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)){
             //if (SceneManager.GetActiveScene().name == "Dungeon"){
-            Debug.Log("moving");
+            //Debug.Log("moving");
                 footstepsDungeon.enabled = true;
             }
             else
