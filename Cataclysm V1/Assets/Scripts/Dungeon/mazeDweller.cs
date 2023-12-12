@@ -8,6 +8,7 @@ public class mazeDweller : MonoBehaviour
     public Transform player;
     private NavMeshAgent monster;
     public GameObject deathScreen;
+    public Transform spawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +22,18 @@ public class mazeDweller : MonoBehaviour
         {
             monster.destination = player.position;
         }
+        else
+        {
+            monster.destination = spawn.position;
+            //deathScreen.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         deathScreen.SetActive(true);
+        playerSeen = false;
+        Cursor.visible = true;
     }
 
 }

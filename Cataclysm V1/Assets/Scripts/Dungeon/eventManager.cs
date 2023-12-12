@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class eventManager : MonoBehaviour
 {
+
     public PlayerLook playerLookScript;
     //PUZZLE ROOM 1
     private Vector3 librarySpawn = new Vector3(-14f, 1f, 70f);
@@ -41,13 +42,11 @@ public class eventManager : MonoBehaviour
 
 
     }
-    //JAIL CELL EVENTS
-    //public GameObject jailWall;
-    //public GameObject jailDoor;
+
     public GameObject jailTrigger3;
     
 
-    //DOOR CHANGER
+    //Jail Cell
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "jailTrigger2")
@@ -93,11 +92,7 @@ public class eventManager : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        lookingAt.SetActive(false);
-                        pickUpText.SetActive(false);
-                        libraryWall.SetActive(false);
-                        player.transform.position = librarySpawn;
-                        Debug.Log("player teleported");
+                        StartCoroutine("teleportToLibrary");
 
                     }
                 }
@@ -202,9 +197,17 @@ public class eventManager : MonoBehaviour
          }*/
     }
 
-    void puzzle1mechanics()
+    IEnumerator teleportToLibrary()
     {
-
+        InputManager.disabled = true;
+        yield return new WaitForSeconds(0.1f);
+        lookingAt.SetActive(false);
+        pickUpText.SetActive(false);
+        libraryWall.SetActive(false);
+        player.transform.position = librarySpawn;
+        Debug.Log("player teleported");
+        yield return new WaitForSeconds(0.1f);
+        InputManager.disabled = false;
     }
 
 
