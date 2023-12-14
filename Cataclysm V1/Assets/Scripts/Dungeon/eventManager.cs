@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class eventManager : MonoBehaviour
 {
+    //SCRIPT REFERENCES
 
     public PlayerLook playerLookScript;
-    //PUZZLE ROOM 1
+
+    //RUNE PUZZLE ROOM
     private Vector3 librarySpawn = new Vector3(-14f, 1f, 70f);
     public GameObject libraryWall;
     private bool rune1 = false;
@@ -18,7 +20,7 @@ public class eventManager : MonoBehaviour
     public GameObject puzzle1Door;
 
 
-
+    
     //MAZE
     public GameObject player;
     public GameObject pillar1, pillar2, collapse2, collapse3;
