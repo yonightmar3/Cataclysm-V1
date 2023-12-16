@@ -17,6 +17,9 @@ public class eventManager : MonoBehaviour
     private bool rune3 = false;
     private bool rune4 = false;
 
+    //ANIMATIONS
+    public Animator rune1Animation;
+
     [SerializeField] private Animator descendingDoor;
     public GameObject puzzle1Door;
 
@@ -112,6 +115,7 @@ public class eventManager : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         rune1 = true;
+                        rune1Animation.SetTrigger("rune1Pressed");
                         Debug.Log("Rune 1");
                     }
                 }
