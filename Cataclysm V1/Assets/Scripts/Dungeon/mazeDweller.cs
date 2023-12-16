@@ -4,91 +4,86 @@ using UnityEngine;
 using UnityEngine.AI;
 public class mazeDweller : MonoBehaviour
 {
+    public mazeActions mazeActionsScript;
     public static bool playerSeen = false;
     public Transform player;
     private NavMeshAgent monster;
     public GameObject deathScreen;
+
+    public Transform bridge;
     /*public Transform spawn;
     private Transform spawnTest;*/
     //FOOTSTEPS
     private Vector3 previousPosition;
     private bool isMoving;// = false;
-    // Adjust this value based on your desired sensitivity
-    //private float movementThreshold = 0.1f;
+
     public AudioSource footsteps;
-    // Start is called before the first frame update
     void Start()
     {
         monster = GetComponent<NavMeshAgent>();
         previousPosition = transform.position;
-        //spawnTest = gameObject.transform;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 playerPosition = player.position;
-
-        if (IsOnNavMesh(playerPosition))
+        if(mazeActionsScript != null)
         {
-            if (playerSeen)
+            Vector3 playerPosition = player.position;
+
+            if(mazeActionsScript.hidden == false)
             {
-                monster.destination = player.position;
-                isMoving = true;
+                if (IsOnNavMesh(playerPosition))
+                {
+                    if (playerSeen)
+                    {
+                        monster.destination = player.position;
+                        isMoving = true;
+                    }
+                }
+                else
+                {
+                    monster.destination = previousPosition;
+                    isMoving = false;
+                }
+            } 
+            else if (mazeActionsScript.hidden == true)
+            {
+                if (GetDistanceToPlayer() > 10f)
+                {
+                    //player hid well
+                    //Debug.Log("hid well");
+                    //monster goes to bridge
+                    monster.destination = bridge.position;
+                }
+                else
+                {
+                    //player didn't hide quikly enuff and monster jumpscares
+                    //Debug.Log("hid poorly");
+                }
+            } 
+            
+
+
+
+            //FOOTSTEPS
+            if (isMoving)
+            {
+                footsteps.enabled = true;
             }
+            else footsteps.enabled = false;
         }
-        else
-        {
-            //monster.destination = spawn.position;
-            monster.destination = previousPosition;
-            isMoving = false;
-            //deathScreen.SetActive(false);
-        }
-
-/*        if (playerSeen)
-        {
-            monster.destination = player.position;
-            isMoving = true;
-        }
-        else
-        {
-            //monster.destination = spawn.position;
-            monster.destination = previousPosition;
-            isMoving = false;
-            //deathScreen.SetActive(false);
-        }*/
-
-/*        if (Vector3.Distance(transform.position, previousPosition) >= movementThreshold)
-        {
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-            Debug.Log("wtf");
-        }*/
-
-        // Update the previous position for the next frame NO!!!!!
-        //previousPosition = transform.position;
-
-        // Use the isMoving variable as needed (e.g., log, perform actions, etc.)
-        if (isMoving)
-        {
-            //Debug.Log("Object is moving!");
-
-            footsteps.enabled = true;
-        }
-        else footsteps.enabled = false;
-
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         deathScreen.SetActive(true);
+        InputManager.disabled = true;
         //playerSeen = false;
         Cursor.visible = true;
+        isMoving = false;
     }
 
     bool IsOnNavMesh(Vector3 position)
@@ -96,6 +91,24 @@ public class mazeDweller : MonoBehaviour
         NavMeshHit hit;
         return NavMesh.SamplePosition(position, out hit, 2f, NavMesh.AllAreas);
     }
+
+    float GetDistanceToPlayer()
+    {
+        // Check if both the enemyAgent and player are valid
+        if (monster != null && player != null)
+        {
+            // Calculate the distance between the enemy and player
+            float distance = Vector3.Distance(transform.position, player.position);
+            return distance;
+        }
+
+        // Return a large value if either the enemyAgent or player is not valid
+        return float.MaxValue;
+    }
+
+    //if player is hidden and range between dweller and player is greater than xyz, player is hidden and dweller's path is set to the bridge
+    //else if the player is hidden but range is too small, dweller opens the doors and jumpscares you
+    //else if player is not hidden he jumpscares you as if in the maze
 
 
 

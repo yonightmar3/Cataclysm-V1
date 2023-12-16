@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class eventManager : MonoBehaviour
 {
     //SCRIPT REFERENCES
@@ -25,9 +26,14 @@ public class eventManager : MonoBehaviour
     public GameObject player;
     public GameObject pillar1, pillar2, collapse2, collapse3;
     public GameObject pickUpText;
-    private GameObject lookingAt;
+    private GameObject lookingAtFar;
+    private GameObject lookingAtClose;
+
     public GameObject collapse2Sound;
     public AudioSource collapse3Sound;
+
+    //BOOKS
+    public GameObject entropyBook;
 
 
 
@@ -70,29 +76,28 @@ public class eventManager : MonoBehaviour
         if (playerLookScript != null)
         {
             // Access the HitInfo property from the PlayerLook script
-            RaycastHit hitInfo = playerLookScript.HitInfo;
+            RaycastHit hitInfoFar = playerLookScript.HitInfoFar;
+            RaycastHit hitInfoClose = playerLookScript.HitInfoClose;
+
 
             // Now you can use hitInfo in this script
-            if (hitInfo.collider != null)
+            if (hitInfoFar.collider != null)
             {
-                lookingAt = hitInfo.transform.gameObject;
+                lookingAtFar = hitInfoFar.transform.gameObject;
                 // Do something with hitInfo
                 //Debug.Log("Hit object: " + hitInfo.collider.gameObject.name);
-                if (hitInfo.transform.gameObject.name == "jailTrigger3")
+                if (hitInfoFar.transform.gameObject.name == "jailTrigger3")
                 {
                     jailCultist.SetActive(true);
                 }
-                if (hitInfo.transform.gameObject.name == "mazeTrigger2")
-                {
-                    collapse2.SetActive(false);
-                    collapse2Sound.SetActive(true);
-                    collapse3.SetActive(false);
-                    pillar1.SetActive(true);
-                    pillar2.SetActive(true);
-                }
+                else pickUpText.SetActive(false);
+            }
+            if (hitInfoClose.collider != null)
+            {
+                lookingAtClose = hitInfoClose.transform.gameObject;
 
                 //PUZZLE 1
-                if (hitInfo.transform.gameObject.name == "libraryKey")
+                if (hitInfoClose.transform.gameObject.name == "libraryKey")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -101,16 +106,16 @@ public class eventManager : MonoBehaviour
 
                     }
                 }
-                else if (hitInfo.transform.gameObject.name == "Rune 1")
+                else if (hitInfoClose.transform.gameObject.name == "Rune 1")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         rune1 = true;
                         Debug.Log("Rune 1");
-                    }  
+                    }
                 }
-                else if (hitInfo.transform.gameObject.name == "Rune 2")
+                else if (hitInfoClose.transform.gameObject.name == "Rune 2")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -127,7 +132,7 @@ public class eventManager : MonoBehaviour
                         }
                     }
                 }
-                else if (hitInfo.transform.gameObject.name == "Rune 3")
+                else if (hitInfoClose.transform.gameObject.name == "Rune 3")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -145,7 +150,7 @@ public class eventManager : MonoBehaviour
                         }
                     }
                 }
-                else if (hitInfo.transform.gameObject.name == "Rune 4")
+                else if (hitInfoClose.transform.gameObject.name == "Rune 4")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -164,15 +169,29 @@ public class eventManager : MonoBehaviour
                         }
                     }
                 }
+                else if (hitInfoClose.transform.gameObject.name == "Entropy Book")
+                {
+                    pickUpText.SetActive(true);
+                    Cursor.visible = true;
+                    if (Input.GetKeyDown(KeyCode.E)){
+                        entropyBook.SetActive(true);
+                        
+                    }
 
+                }
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    Cursor.visible = false;
+                    entropyBook.SetActive(false);
+                }
                 else pickUpText.SetActive(false);
+            }
             }
 
             if (rune4 == true)
             {
                 Debug.Log("works");
                 descendingDoor.SetTrigger("puzzle1wallDescend");
-
             }
             //else Debug.Log(":(");
         }
@@ -200,13 +219,14 @@ public class eventManager : MonoBehaviour
                  Debug.Log("pauzica");
              }
          }*/
-    }
+    
+
 
     IEnumerator teleportToLibrary()
     {
         InputManager.disabled = true;
         yield return new WaitForSeconds(0.1f);
-        lookingAt.SetActive(false);
+        lookingAtClose.SetActive(false);
         pickUpText.SetActive(false);
         libraryWall.SetActive(false);
         player.transform.position = librarySpawn;

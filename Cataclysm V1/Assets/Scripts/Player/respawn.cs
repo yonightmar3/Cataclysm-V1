@@ -21,7 +21,7 @@ public class respawn : MonoBehaviour
 
     IEnumerator respawnMazeCoroutine()
     {
-        InputManager.disabled = true;
+        //InputManager.disabled = true;
         yield return new WaitForSeconds(0.1f);
         player.transform.position = mazeRespawn;
         Debug.Log("player teleported");

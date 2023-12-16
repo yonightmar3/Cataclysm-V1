@@ -11,7 +11,9 @@ public class PlayerLook : MonoBehaviour
     public float xSensitivity = 30f;
     public float ySensitivity = 30f;
 
-    public RaycastHit HitInfo { get; private set; }
+    public RaycastHit HitInfoFar { get; private set; }
+    public RaycastHit HitInfoClose { get; private set; }
+
 
     private void Start()
     {
@@ -42,18 +44,31 @@ public class PlayerLook : MonoBehaviour
         Vector3 cameraDirection = cam.transform.forward;
 
         // Declare a local RaycastHit variable
-        RaycastHit hit;
+        RaycastHit hitFar;
+        RaycastHit hitClose;
+
 
         // Perform the raycast and assign the result to the local variable
-        if (Physics.Raycast(cam.transform.position, cameraDirection, out hit, 20f))
+        if (Physics.Raycast(cam.transform.position, cameraDirection, out hitFar, 20f))
         {
             // Assign the local variable to the class property
-            HitInfo = hit;
+            HitInfoFar = hitFar;
         }
         else
         {
             // If no hit, set the HitInfo property to null or some default value
-            HitInfo = new RaycastHit(); // You might want to set a default value based on your requirements
+            HitInfoFar = new RaycastHit(); // You might want to set a default value based on your requirements
+        }
+
+        if (Physics.Raycast(cam.transform.position, cameraDirection, out hitClose, 3f))
+        {
+            // Assign the local variable to the class property
+            HitInfoClose = hitFar;
+        }
+        else
+        {
+            // If no hit, set the HitInfo property to null or some default value
+            HitInfoClose = new RaycastHit(); // You might want to set a default value based on your requirements
         }
     }
 
