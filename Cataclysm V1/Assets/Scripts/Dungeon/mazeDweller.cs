@@ -56,6 +56,7 @@ public class mazeDweller : MonoBehaviour
                     //Debug.Log("hid well");
                     //monster goes to bridge
                     monster.destination = bridge.position;
+                    playerSeen = false;
                 }
                 else
                 {
