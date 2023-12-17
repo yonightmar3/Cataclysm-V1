@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLook : MonoBehaviour
 {
@@ -8,8 +9,14 @@ public class PlayerLook : MonoBehaviour
     public Camera cam;
     private float xRotation = 0f;
 
+    public GameObject menu;
+
+    private float sensitivity;
+
     public float xSensitivity = 30f;
     public float ySensitivity = 30f;
+
+    [SerializeField] private Slider sensitivitySlider;
 
     public RaycastHit HitInfoFar { get; private set; }
     public RaycastHit HitInfoClose { get; private set; }
@@ -18,6 +25,11 @@ public class PlayerLook : MonoBehaviour
     private void Start()
     {
         Cursor.visible = false;
+
+        if (PlayerPrefs.HasKey("sensitivity"))
+        {
+            LoadSensitivity();
+        }
     }
 
     public void ProcessLook(Vector2 input)
@@ -25,12 +37,12 @@ public class PlayerLook : MonoBehaviour
         float mouseX = input.x;
         float mouseY = input.y;
 
-        xRotation -= (mouseY * Time.deltaTime) * ySensitivity;
+        xRotation -= (mouseY * Time.deltaTime) * sensitivity;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * sensitivity);
     }
 
     /*    private void Update()
@@ -41,6 +53,11 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            menu.SetActive(true);
+        }
         Vector3 cameraDirection = cam.transform.forward;
 
         // Declare a local RaycastHit variable
@@ -70,6 +87,18 @@ public class PlayerLook : MonoBehaviour
             // If no hit, set the HitInfo property to null or some default value
             HitInfoClose = new RaycastHit(); // You might want to set a default value based on your requirements
         }
+    }
+
+    private void LoadSensitivity()
+    {
+        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity");
+        SetSensitivity();
+    }
+
+    public void SetSensitivity()
+    {
+        sensitivity = sensitivitySlider.value; 
+        PlayerPrefs.SetFloat("musicVolume", sensitivity);
     }
 
 

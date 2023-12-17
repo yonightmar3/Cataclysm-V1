@@ -124,6 +124,7 @@ public class eventManager : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        rune1Animation.SetTrigger("rune1Up");
                         if (rune1 == true)
                         {
                             rune2 = true;
