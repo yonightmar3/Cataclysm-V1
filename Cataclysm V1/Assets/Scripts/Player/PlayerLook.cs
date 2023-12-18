@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerLook : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerLook : MonoBehaviour
 
     public GameObject menu;
     private bool isMenuActive = false;
+    private GameObject menuCanvas;
 
 
     private float sensitivity;
@@ -32,6 +34,8 @@ public class PlayerLook : MonoBehaviour
         {
             LoadSensitivity();
         }
+
+        menuCanvas = GameObject.Find("Menu Canvas");
     }
 
     public void ProcessLook(Vector2 input)
@@ -57,15 +61,17 @@ public class PlayerLook : MonoBehaviour
     void Update()
     {
         // Check for button press (you can customize this based on your input method)
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             // Toggle the menu state
-            isMenuActive = !isMenuActive;
-
-            // Activate or deactivate the menu accordingly
-            menu.SetActive(isMenuActive);
+            SceneManager.LoadScene("Dungeon");
         }
-    
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // Toggle the menu state
+            SceneManager.LoadScene("Testing");
+        }
+
 
         Vector3 cameraDirection = cam.transform.forward;
 

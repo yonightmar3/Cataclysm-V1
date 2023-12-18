@@ -61,10 +61,10 @@ public class portalTeleporter : MonoBehaviour
 	IEnumerator teleport()
 	{
 		InputManager.disabled = true;
-		yield return null;
+		yield return new WaitForSeconds(0.01f);
 		player.transform.position = new Vector3(locationB.position.x, player.position.y, locationB.position.z);
 		Debug.Log("player teleported");
-		yield return null;
+		yield return new WaitForSeconds(0.01f);
 		InputManager.disabled = false;
 	}
 }
