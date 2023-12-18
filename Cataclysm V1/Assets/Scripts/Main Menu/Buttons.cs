@@ -10,7 +10,7 @@ public class Buttons : MonoBehaviour
 
     public void playButton()
     {
-        SceneManager.LoadScene("MainMap");
+        SceneManager.LoadScene("Testing");
     }
 
     public void mainMapButton()

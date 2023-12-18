@@ -10,6 +10,8 @@ public class PlayerLook : MonoBehaviour
     private float xRotation = 0f;
 
     public GameObject menu;
+    private bool isMenuActive = false;
+
 
     private float sensitivity;
 
@@ -51,13 +53,20 @@ public class PlayerLook : MonoBehaviour
             //Physics.Raycast(cam.transform.position, cameraDirection, out RaycastHit hitInfo, 20f);
         }*/
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-
-/*        if (Input.GetKey(KeyCode.Escape))
+        // Check for button press (you can customize this based on your input method)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            menu.SetActive(true);
-        }*/
+            // Toggle the menu state
+            isMenuActive = !isMenuActive;
+
+            // Activate or deactivate the menu accordingly
+            menu.SetActive(isMenuActive);
+        }
+    
+
         Vector3 cameraDirection = cam.transform.forward;
 
         // Declare a local RaycastHit variable

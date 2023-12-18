@@ -10,7 +10,7 @@ public class eventManager : MonoBehaviour
     public PlayerLook playerLookScript;
 
     //RUNE PUZZLE ROOM
-    private Vector3 librarySpawn = new Vector3(-14f, 1f, 70f);
+    public Transform librarySpawn;
     public GameObject libraryWall;
     private bool rune1 = false;
     private bool rune2 = false;
@@ -201,31 +201,6 @@ public class eventManager : MonoBehaviour
             //else Debug.Log(":(");
         }
 
-        //WHEN RAYCAST
-        /*Vector3 cameraDirection = cam.transform.forward;
-        Physics.Raycast(cam.transform.position, cameraDirection, out RaycastHit hitInfo, 20f);
-        if (hitInfo.transform != null)
-        {
-            // Check if the hit object is the one you're looking for
-            if (hitInfo.transform.gameObject.name == "jailTrigger3")
-            {
-                Debug.Log("walking cultist");
-                jailCultist.SetActive(true);
-            }
-        }*/
-        /* RaycastHit hitInfo = playerLook.HitInfo;
-
-         // Check if the raycast hit something
-         if (hitInfo.transform != null)
-         {
-             // Check if the hit object is the one you're looking for
-             if (hitInfo.transform.gameObject.name == "jailTrigger3")
-             {
-                 Debug.Log("pauzica");
-             }
-         }*/
-    
-
 
     IEnumerator teleportToLibrary()
     {
@@ -234,7 +209,7 @@ public class eventManager : MonoBehaviour
         lookingAtClose.SetActive(false);
         pickUpText.SetActive(false);
         libraryWall.SetActive(false);
-        player.transform.position = librarySpawn;
+        player.transform.position = new Vector3(librarySpawn.transform.position.x, player.transform.position.y, librarySpawn.transform.position.z);
         Debug.Log("player teleported");
         yield return new WaitForSeconds(0.1f);
         InputManager.disabled = false;
