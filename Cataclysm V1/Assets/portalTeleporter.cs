@@ -11,6 +11,8 @@ public class portalTeleporter : MonoBehaviour
 	public Transform locationA;
 	public Transform locationB;
 
+	private Vector3 positionOffset;
+
 	private bool playerIsOverlapping = false;
 
 	// Update is called once per frame
@@ -30,7 +32,7 @@ public class portalTeleporter : MonoBehaviour
 				rotationDiff += 180;
 				player.Rotate(Vector3.up, rotationDiff);
 
-				Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
+				positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
 
 				StartCoroutine("teleport");
 				//teleport();
@@ -41,30 +43,43 @@ public class portalTeleporter : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.tag == "Player")
+
+		void OnTriggerEnter(Collider other)
 		{
-			Debug.Log("triggered");
-			playerIsOverlapping = true;
+			if (other.tag == "Player")
+			{
+				Debug.Log("triggered");
+				playerIsOverlapping = true;
+			}
+		}
+
+		void OnTriggerExit(Collider other)
+		{
+			if (other.tag == "Player")
+			{
+				playerIsOverlapping = false;
+			}
+		}
+
+		/*	IEnumerator teleport()
+			{
+				InputManager.disabled = true;
+				yield return new WaitForSeconds(0.01f);
+
+				player.transform.position = new Vector3(locationB.position.x, player.position.y, locationB.position.z);
+				Debug.Log("player teleported");
+				yield return new WaitForSeconds(0.01f);
+				InputManager.disabled = false;
+			}*/
+
+		IEnumerator teleport()
+		{
+			InputManager.disabled = true;
+			yield return new WaitForSeconds(0.01f);
+
+			player.transform.position = new Vector3(locationB.position.x, locationB.position.y, locationB.position.z) + positionOffset;
+			Debug.Log("player teleported");
+			yield return new WaitForSeconds(0.01f);
+			InputManager.disabled = false;
 		}
 	}
-
-	void OnTriggerExit(Collider other)
-	{
-		if (other.tag == "Player")
-		{
-			playerIsOverlapping = false;
-		}
-	}
-
-	IEnumerator teleport()
-	{
-		InputManager.disabled = true;
-		yield return new WaitForSeconds(0.01f);
-		player.transform.position = new Vector3(locationB.position.x, player.position.y, locationB.position.z);
-		Debug.Log("player teleported");
-		yield return new WaitForSeconds(0.01f);
-		InputManager.disabled = false;
-	}
-}
