@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using UnityEngine;
 
 public class RepeatingHallway : MonoBehaviour
@@ -44,4 +44,22 @@ public class RepeatingHallway : MonoBehaviour
         InputManager.disabled = false;
     }
 
+}
+*/
+
+using System.Collections;
+using UnityEngine;
+
+public class RepeatingHallway : portalTeleporter
+{
+    public GameObject appearableWall;
+
+    private void Update()
+    {
+        if (teleported == true){
+            appearableWall.SetActive(true);
+        }
+
+        base.Update();
+    }
 }

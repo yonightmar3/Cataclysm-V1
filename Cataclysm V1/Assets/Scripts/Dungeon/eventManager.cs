@@ -19,6 +19,8 @@ public class eventManager : MonoBehaviour
 
     //ANIMATIONS
     public Animator rune1Animation;
+    public Animator rune2Animation;
+
 
     [SerializeField] private Animator descendingDoor;
     public GameObject puzzle1Door;
@@ -128,6 +130,8 @@ public class eventManager : MonoBehaviour
                         if (rune1 == true)
                         {
                             rune2 = true;
+                            rune2Animation.SetTrigger("rune2Pressed");
+
                             Debug.Log("Rune 2");
                         }
                         else
@@ -184,11 +188,11 @@ public class eventManager : MonoBehaviour
                     }
 
                 }
-                if (Input.GetKeyDown(KeyCode.F))
+/*                if (Input.GetKeyDown(KeyCode.F))
                 {
                     Cursor.visible = false;
                     entropyBook.SetActive(false);
-                }
+                }*/
                 else pickUpText.SetActive(false);
             }
             }

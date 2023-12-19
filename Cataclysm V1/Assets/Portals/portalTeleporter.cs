@@ -7,11 +7,12 @@ public class portalTeleporter : MonoBehaviour
 
 	public Transform player;
 	public Transform reciever;
+	public bool teleported;
 
 	private Vector3 positionOffset;
 
 	private bool playerIsOverlapping = false;
-	void Update()
+	public void Update()
 	{
 		if (playerIsOverlapping)
 		{
@@ -27,6 +28,8 @@ public class portalTeleporter : MonoBehaviour
 				positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
 
 				StartCoroutine("teleport");
+
+				teleported = true;
 
 				playerIsOverlapping = false;
 			}
