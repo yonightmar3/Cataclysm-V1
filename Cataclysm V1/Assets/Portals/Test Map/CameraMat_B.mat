@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: CameraMat_B
   m_Shader: {fileID: 4800000, guid: b5c097946963b0f46a68c67ff412ec49, type: 3}
-  m_Parent: {fileID: 2100000, guid: a6a77b0f2d1ee4f4981247bf58621f2f, type: 2}
+  m_Parent: {fileID: 2100000, guid: 201331451a8aa7a4b80660aa6cb1b18b, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
