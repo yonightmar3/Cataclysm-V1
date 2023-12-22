@@ -18,7 +18,7 @@ public class eventManager : MonoBehaviour
     private bool rune4 = false;
 
     //ANIMATIONS
-    public Animator rune1Animation;
+    public Animator rune1Animation, rune3Animation, rune4Animation;
     public Animator rune2Animation;
 
 
@@ -113,7 +113,6 @@ public class eventManager : MonoBehaviour
                 }
                 else if (hitInfoClose.transform.gameObject.name == "Rune 1 Trigger")
                 {
-                    Debug.Log("21");
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
@@ -127,11 +126,13 @@ public class eventManager : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        rune2Animation.SetTrigger("rune1Down");
                         //rune1Animation.SetTrigger("rune1Up");
                         if (rune1 == true)
                         {
                         rune2 = true;
                         rune2Animation.SetTrigger("rune2Down");
+                        rune1Animation.SetTrigger("rune1Up");
 
                         Debug.Log("Rune 2");
                         }
@@ -147,6 +148,7 @@ public class eventManager : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        rune3Animation.SetTrigger("rune1Down");
                         if (rune1 == true && rune2 == true)
                         {
                             Debug.Log("Rune 3");
@@ -165,6 +167,7 @@ public class eventManager : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        rune4Animation.SetTrigger("rune1Down");
                         if (rune1 == true && rune2 == true && rune3 == true)
                         {
                             Debug.Log("Rune 4");
