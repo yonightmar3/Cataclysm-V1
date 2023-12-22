@@ -59,12 +59,13 @@ public class mazeActions : MonoBehaviour
                 lookingAtFar = hitInfoFar.transform.gameObject;
                 // Do something with hitInfo
                 //Debug.Log("Hit object: " + hitInfo.collider.gameObject.name);
-/*                if (lookingAtFar.name == "mazeTrigger1")
+                if (lookingAtFar.name == "mazeTrigger1")
                 {
                     mazeDweller.playerSeen = true;
+                    mazeDwellerAnimator.SetTrigger("playerSeen");
                     collapse1.SetActive(false);
                     collapse1Sound.SetActive(true);
-                }*/
+                }
                 if (lookingAtFar.name == "mazeTrigger2")
                 {
                     Debug.Log("transfer works");
@@ -78,13 +79,13 @@ public class mazeActions : MonoBehaviour
             if (hitInfoClose.collider != null)
             {
                 lookingAtClose = hitInfoClose.transform.gameObject;
-                if (lookingAtClose.name == "mazeTrigger1")
+/*                if (lookingAtClose.name == "mazeTrigger1")
                 {
                     mazeDweller.playerSeen = true;
                     mazeDwellerAnimator.SetTrigger("playerSeen");
                     collapse1.SetActive(false);
                     collapse1Sound.SetActive(true);
-                }
+                }*/
                 if (lookingAtClose.name == "Large Hiding Cabinet")
                 {
                         pickUpText.SetActive(true);

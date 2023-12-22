@@ -111,34 +111,35 @@ public class eventManager : MonoBehaviour
 
                     }
                 }
-                else if (hitInfoClose.transform.gameObject.name == "Rune 1")
+                else if (hitInfoClose.transform.gameObject.name == "Rune 1 Trigger")
                 {
+                    Debug.Log("21");
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         rune1 = true;
-                        rune1Animation.SetTrigger("rune1Pressed");
+                        rune1Animation.SetTrigger("rune1Down");
                         Debug.Log("Rune 1");
                     }
                 }
-                else if (hitInfoClose.transform.gameObject.name == "Rune 2")
+                else if (hitInfoClose.transform.gameObject.name == "Rune 2 Trigger")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        rune1Animation.SetTrigger("rune1Up");
-                        if (rune1 == true)
-                        {
+                        //rune1Animation.SetTrigger("rune1Up");
+                        //if (rune1 == true)
+                        //{
                             rune2 = true;
-                            rune2Animation.SetTrigger("rune2Pressed");
+                            rune2Animation.SetTrigger("rune2Down");
 
                             Debug.Log("Rune 2");
-                        }
-                        else
-                        {
-                            rune1 = false;
-                            Debug.Log("Rune 2 WRONG");
-                        }
+                        //}
+                        //else
+                        //{
+                        //    rune1 = false;
+                        //    Debug.Log("Rune 2 WRONG");
+                        //}
                     }
                 }
                 else if (hitInfoClose.transform.gameObject.name == "Rune 3")
