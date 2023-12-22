@@ -128,21 +128,21 @@ public class eventManager : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         //rune1Animation.SetTrigger("rune1Up");
-                        //if (rune1 == true)
-                        //{
-                            rune2 = true;
-                            rune2Animation.SetTrigger("rune2Down");
+                        if (rune1 == true)
+                        {
+                        rune2 = true;
+                        rune2Animation.SetTrigger("rune2Down");
 
-                            Debug.Log("Rune 2");
-                        //}
-                        //else
-                        //{
-                        //    rune1 = false;
-                        //    Debug.Log("Rune 2 WRONG");
-                        //}
+                        Debug.Log("Rune 2");
+                        }
+                        else
+                        {
+                            rune1 = false;
+                            Debug.Log("Rune 2 WRONG");
+                        }
                     }
                 }
-                else if (hitInfoClose.transform.gameObject.name == "Rune 3")
+                else if (hitInfoClose.transform.gameObject.name == "Rune 3 Trigger")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -160,7 +160,7 @@ public class eventManager : MonoBehaviour
                         }
                     }
                 }
-                else if (hitInfoClose.transform.gameObject.name == "Rune 4")
+                else if (hitInfoClose.transform.gameObject.name == "Rune 4 Trigger")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
