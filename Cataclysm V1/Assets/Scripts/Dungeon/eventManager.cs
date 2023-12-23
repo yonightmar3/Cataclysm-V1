@@ -20,6 +20,7 @@ public class eventManager : MonoBehaviour
     //ANIMATIONS
     public Animator rune1Animation, rune3Animation, rune4Animation;
     public Animator rune2Animation;
+    private int runeCounter = 0;
 
 
     [SerializeField] private Animator descendingDoor;
@@ -116,6 +117,7 @@ public class eventManager : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        runeCounter++;
                         rune1 = true;
                         rune1Animation.SetTrigger("rune1Down");
                         Debug.Log("Rune 1");
@@ -126,6 +128,8 @@ public class eventManager : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        runeCounter++;
+
                         rune2Animation.SetTrigger("rune1Down");
                         //rune1Animation.SetTrigger("rune1Up");
                         if (rune1 == true)
@@ -145,9 +149,12 @@ public class eventManager : MonoBehaviour
                 }
                 else if (hitInfoClose.transform.gameObject.name == "Rune 3 Trigger")
                 {
+
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        runeCounter++;
+
                         rune3Animation.SetTrigger("rune1Down");
                         if (rune1 == true && rune2 == true)
                         {
@@ -164,9 +171,12 @@ public class eventManager : MonoBehaviour
                 }
                 else if (hitInfoClose.transform.gameObject.name == "Rune 4 Trigger")
                 {
+
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        runeCounter++;
+
                         rune4Animation.SetTrigger("rune1Down");
                         if (rune1 == true && rune2 == true && rune3 == true)
                         {
@@ -200,14 +210,23 @@ public class eventManager : MonoBehaviour
                 else pickUpText.SetActive(false);
             }
             }
-
-            if (rune4 == true)
+            if(rune4==false && runeCounter == 4)
+            {
+                rune1Animation.SetTrigger("rune1Up");
+                rune2Animation.SetTrigger("rune1Up");
+                rune3Animation.SetTrigger("rune1Up");
+                rune4Animation.SetTrigger("rune1Up");
+                runeCounter = 0;
+            }
+        if (rune4 == true)
             {
                 Debug.Log("works");
                 descendingDoor.SetTrigger("puzzle1wallDescend");
             }
-            //else Debug.Log(":(");
-        }
+            Debug.Log("Rune Counter: " + runeCounter);
+
+        //else Debug.Log(":(");
+    }
 
 
     IEnumerator teleportToLibrary()
