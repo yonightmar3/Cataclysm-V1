@@ -16,6 +16,7 @@ public class eventManager : MonoBehaviour
     private bool rune2 = false;
     private bool rune3 = false;
     private bool rune4 = false;
+    public AudioSource runePressedSound;
 
     //ANIMATIONS
     public Animator rune1Animation, rune3Animation, rune4Animation;
@@ -228,7 +229,10 @@ public class eventManager : MonoBehaviour
         //else Debug.Log(":(");
     }
 
-
+    public void playRuneSound()
+    {
+        runePressedSound.Play();
+    }
     IEnumerator teleportToLibrary()
     {
         InputManager.disabled = true;
