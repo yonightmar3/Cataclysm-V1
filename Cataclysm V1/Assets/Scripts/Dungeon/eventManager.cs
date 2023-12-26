@@ -27,8 +27,9 @@ public class eventManager : MonoBehaviour
     [SerializeField] private Animator descendingDoor;
     public GameObject puzzle1Door;
 
+    private bool isBookOpen = false;
 
-    
+
     //MAZE
     public GameObject player;
     public GameObject pillar1, pillar2, collapse2, collapse3;
@@ -197,9 +198,26 @@ public class eventManager : MonoBehaviour
                 {
                     pickUpText.SetActive(true);
                     Cursor.visible = true;
-                    if (Input.GetKeyDown(KeyCode.E)){
-                        entropyBook.SetActive(true);
-                        
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        if (isBookOpen)
+                        {
+                            // Close the book
+                            entropyBook.SetActive(false);
+                            pickUpText.SetActive(true);
+                            isBookOpen = false;
+                        }
+                        else
+                        {
+                            // Open the book
+                            entropyBook.SetActive(true);
+                            pickUpText.SetActive(false);
+                            isBookOpen = true;
+
+                        }
+
+                        // Toggle the book state
+                        //isBookOpen = !isBookOpen;
                     }
 
                 }
@@ -224,7 +242,6 @@ public class eventManager : MonoBehaviour
                 Debug.Log("works");
                 descendingDoor.SetTrigger("puzzle1wallDescend");
             }
-            Debug.Log("Rune Counter: " + runeCounter);
 
         //else Debug.Log(":(");
     }

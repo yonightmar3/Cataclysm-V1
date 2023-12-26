@@ -10,22 +10,16 @@ public class portalCamera180B : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 playerOffsetFromPortal = playerCamera.position - portal.position;
+        Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
+        transform.position = portal.position + playerOffsetFromPortal;
 
-        // Calculate the new position of the camera relative to the other portal
-        Vector3 newCameraPosition = otherPortal.position + playerOffsetFromPortal;
-
-        // Set the new position of the camera
-        transform.position = newCameraPosition;
-
-        // Calculate the rotation difference between the two portals
         float angularDifferenceBetweenPortalRotations = Quaternion.Angle(portal.rotation, otherPortal.rotation);
         Quaternion portalRotationalDifference = Quaternion.AngleAxis(angularDifferenceBetweenPortalRotations, Vector3.up);
 
-        // Calculate the new camera direction based on the rotation difference
+        // Modify the camera direction by negating the Z component
         Vector3 newCameraDirection = portalRotationalDifference * playerCamera.forward;
+        newCameraDirection.z *= -1f;
 
-        // Set the new rotation of the camera
         transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
     }
 }

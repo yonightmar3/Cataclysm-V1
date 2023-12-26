@@ -76,5 +76,16 @@ namespace ChristinaCreatesGames.Typography.Book
 
             UpdatePagination();
         }
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.RightArrow)){
+                NextPage();
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                PreviousPage();
+            }
+        }
     }
 }
