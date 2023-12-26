@@ -28,6 +28,7 @@ public class eventManager : MonoBehaviour
     public GameObject puzzle1Door;
 
     private bool isBookOpen = false;
+    private bool bookSeen = false;
 
 
     //MAZE
@@ -136,11 +137,11 @@ public class eventManager : MonoBehaviour
                         //rune1Animation.SetTrigger("rune1Up");
                         if (rune1 == true)
                         {
-                        rune2 = true;
-                        rune2Animation.SetTrigger("rune2Down");
-                        rune1Animation.SetTrigger("rune1Up");
+                            rune2 = true;
+                            rune2Animation.SetTrigger("rune2Down");
+                            rune1Animation.SetTrigger("rune1Up");
 
-                        Debug.Log("Rune 2");
+                            Debug.Log("Rune 2");
                         }
                         else
                         {
@@ -196,8 +197,20 @@ public class eventManager : MonoBehaviour
                 }
                 else if (hitInfoClose.transform.gameObject.name == "Entropy Book")
                 {
+                    if(hitInfoClose.transform.gameObject.name != "Entropy Book")
+                    {
+                        pickUpText.SetActive(false);
+                        //Cursor.visible = false;
+                        bookSeen = false;
+                    }
                     pickUpText.SetActive(true);
-                    Cursor.visible = true;
+                    //Cursor.visible = false;
+                    bookSeen = true;
+                }
+                else pickUpText.SetActive(false);
+
+                if (bookSeen == true)
+                {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         if (isBookOpen)
@@ -206,6 +219,7 @@ public class eventManager : MonoBehaviour
                             entropyBook.SetActive(false);
                             pickUpText.SetActive(true);
                             isBookOpen = false;
+                            bookSeen = false;
                         }
                         else
                         {
@@ -219,14 +233,15 @@ public class eventManager : MonoBehaviour
                         // Toggle the book state
                         //isBookOpen = !isBookOpen;
                     }
-
                 }
+                    
+
+                
 /*                if (Input.GetKeyDown(KeyCode.F))
                 {
                     Cursor.visible = false;
                     entropyBook.SetActive(false);
                 }*/
-                else pickUpText.SetActive(false);
             }
             }
             if(rune4==false && runeCounter == 4)
