@@ -197,68 +197,64 @@ public class eventManager : MonoBehaviour
                 }
                 else if (hitInfoClose.transform.gameObject.name == "Entropy Book")
                 {
-                    if(hitInfoClose.transform.gameObject.name != "Entropy Book")
-                    {
-                        pickUpText.SetActive(false);
-                        //Cursor.visible = false;
-                        bookSeen = false;
-                    }
                     pickUpText.SetActive(true);
-                    //Cursor.visible = false;
-                    bookSeen = true;
-                }
-                else pickUpText.SetActive(false);
-
-                if (bookSeen == true)
-                {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        if (isBookOpen)
+                        Debug.Log("book");
+
+                        entropyBook.SetActive(true);
+                        pickUpText.SetActive(false);
+                        isBookOpen = true;
+                    }
+                }
+            }
+
+            else pickUpText.SetActive(false);
+                    //bookSeen = false;
+
+                    if (isBookOpen == true)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Escape))
                         {
+
                             // Close the book
                             entropyBook.SetActive(false);
                             pickUpText.SetActive(true);
                             isBookOpen = false;
                             bookSeen = false;
-                        }
-                        else
-                        {
-                            // Open the book
-                            entropyBook.SetActive(true);
-                            pickUpText.SetActive(false);
-                            isBookOpen = true;
 
-                        }
 
-                        // Toggle the book state
-                        //isBookOpen = !isBookOpen;
+                            // Toggle the book state
+                            //isBookOpen = !isBookOpen;
+                        }
                     }
+
+
+
+                    /*                if (Input.GetKeyDown(KeyCode.F))
+                                    {
+                                        Cursor.visible = false;
+                                        entropyBook.SetActive(false);
+                                    }*/
+
+                    if (rune4 == false && runeCounter == 4)
+                    {
+                        rune1Animation.SetTrigger("rune1Up");
+                        rune2Animation.SetTrigger("rune1Up");
+                        rune3Animation.SetTrigger("rune1Up");
+                        rune4Animation.SetTrigger("rune1Up");
+                        runeCounter = 0;
+                    }
+                    if (rune4 == true)
+                    {
+                        Debug.Log("works");
+                        descendingDoor.SetTrigger("puzzle1wallDescend");
+                    }
+
+                    //else Debug.Log(":(");
                 }
-                    
-
-                
-/*                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    Cursor.visible = false;
-                    entropyBook.SetActive(false);
-                }*/
-            }
-            }
-            if(rune4==false && runeCounter == 4)
-            {
-                rune1Animation.SetTrigger("rune1Up");
-                rune2Animation.SetTrigger("rune1Up");
-                rune3Animation.SetTrigger("rune1Up");
-                rune4Animation.SetTrigger("rune1Up");
-                runeCounter = 0;
-            }
-        if (rune4 == true)
-            {
-                Debug.Log("works");
-                descendingDoor.SetTrigger("puzzle1wallDescend");
-            }
-
-        //else Debug.Log(":(");
+            
+        
     }
 
     public void playRuneSound()
