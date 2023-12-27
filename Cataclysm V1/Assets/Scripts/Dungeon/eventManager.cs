@@ -195,66 +195,66 @@ public class eventManager : MonoBehaviour
                         }
                     }
                 }
-                else if (hitInfoClose.transform.gameObject.name == "Entropy Book")
+                //else if (hitInfoClose.transform.gameObject.name == "Entropy Book")
+                //{
+                /*pickUpText.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    pickUpText.SetActive(true);
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        Debug.Log("book");
+                    Debug.Log("book");
 
-                        entropyBook.SetActive(true);
-                        pickUpText.SetActive(false);
-                        isBookOpen = true;
-                    }
+                    entropyBook.SetActive(true);
+                    pickUpText.SetActive(false);
+                    isBookOpen = true;
                 }
             }
+        }*/
 
-            else pickUpText.SetActive(false);
-                    //bookSeen = false;
+        else pickUpText.SetActive(false);
+                /*//bookSeen = false;
 
-                    if (isBookOpen == true)
+                if (isBookOpen == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.Escape))
                     {
-                        if (Input.GetKeyDown(KeyCode.Escape))
-                        {
 
-                            // Close the book
-                            entropyBook.SetActive(false);
-                            pickUpText.SetActive(true);
-                            isBookOpen = false;
-                            bookSeen = false;
+                        // Close the book
+                        entropyBook.SetActive(false);
+                        pickUpText.SetActive(true);
+                        isBookOpen = false;
+                        bookSeen = false;
 
 
-                            // Toggle the book state
-                            //isBookOpen = !isBookOpen;
-                        }
+                        // Toggle the book state
+                        //isBookOpen = !isBookOpen;
                     }
+                }*/
 
 
 
-                    /*                if (Input.GetKeyDown(KeyCode.F))
-                                    {
-                                        Cursor.visible = false;
-                                        entropyBook.SetActive(false);
-                                    }*/
+                /*                if (Input.GetKeyDown(KeyCode.F))
+                                {
+                                    Cursor.visible = false;
+                                    entropyBook.SetActive(false);
+                                }*/
 
-                    if (rune4 == false && runeCounter == 4)
-                    {
-                        rune1Animation.SetTrigger("rune1Up");
-                        rune2Animation.SetTrigger("rune1Up");
-                        rune3Animation.SetTrigger("rune1Up");
-                        rune4Animation.SetTrigger("rune1Up");
-                        runeCounter = 0;
-                    }
-                    if (rune4 == true)
-                    {
-                        Debug.Log("works");
-                        descendingDoor.SetTrigger("puzzle1wallDescend");
-                    }
-
-                    //else Debug.Log(":(");
+                if (rune4 == false && runeCounter == 4)
+                {
+                    rune1Animation.SetTrigger("rune1Up");
+                    rune2Animation.SetTrigger("rune1Up");
+                    rune3Animation.SetTrigger("rune1Up");
+                    rune4Animation.SetTrigger("rune1Up");
+                    runeCounter = 0;
                 }
-            
-        
+                if (rune4 == true)
+                {
+                    Debug.Log("works");
+                    descendingDoor.SetTrigger("puzzle1wallDescend");
+                }
+
+                //else Debug.Log(":(");
+            }
+
+        }
     }
 
     public void playRuneSound()
