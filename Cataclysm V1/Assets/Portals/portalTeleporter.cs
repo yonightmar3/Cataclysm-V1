@@ -9,6 +9,8 @@ public class portalTeleporter : MonoBehaviour
 	public Transform reciever;
 	public bool teleported;
 
+	public GameObject otherPortal;
+
 	private Vector3 positionOffset;
 
 	private bool playerIsOverlapping = false;
@@ -29,6 +31,8 @@ public class portalTeleporter : MonoBehaviour
 
 				StartCoroutine("teleport");
 
+
+
 				teleported = true;
 
 				playerIsOverlapping = false;
@@ -43,6 +47,7 @@ public class portalTeleporter : MonoBehaviour
 			{
 				Debug.Log("triggered");
 				playerIsOverlapping = true;
+				//otherPortal.SetActive(false);
 			}
 		}
 
@@ -50,6 +55,7 @@ public class portalTeleporter : MonoBehaviour
 		{
 			if (other.tag == "Player")
 			{
+				//otherPortal.SetActive(true);
 				playerIsOverlapping = false;
 			}
 		}
