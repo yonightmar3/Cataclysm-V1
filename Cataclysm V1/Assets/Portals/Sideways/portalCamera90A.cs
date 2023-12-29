@@ -10,7 +10,7 @@ public class portalCamera90A : MonoBehaviour
 
     // Update is called once per frame
 
-    void LateUpdate()
+    void Update()
     {
         Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
 
