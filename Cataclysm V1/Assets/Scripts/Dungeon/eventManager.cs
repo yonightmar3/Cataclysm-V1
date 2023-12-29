@@ -195,6 +195,28 @@ public class eventManager : MonoBehaviour
                         }
                     }
                 }
+                else if (hitInfoClose.transform.gameObject.tag == "Door")
+                {
+                    GameObject door = hitInfoClose.transform.gameObject;
+                    Animator doorAnim = door.GetComponent<Animator>();
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorOpen"))
+                        {
+                            //close
+                            doorAnim.ResetTrigger("doorOpen");
+                            doorAnim.SetTrigger("doorClose");
+                        }
+                        if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorClose"))
+                        {
+                            //open
+                            doorAnim.ResetTrigger("doorClose");
+                            doorAnim.SetTrigger("doorOpen");
+                            door.GetComponent<BoxCollider>().isTrigger = true;
+                        }
+                    }
+                }
                 //else if (hitInfoClose.transform.gameObject.name == "Entropy Book")
                 //{
                 /*pickUpText.SetActive(true);
