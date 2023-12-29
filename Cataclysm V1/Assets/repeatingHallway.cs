@@ -20,7 +20,6 @@ public class RepeatingHallway : portalTeleporter
             mainDoor.SetActive(false);
             portal.SetActive(true);
         }
-        Debug.Log("Amount of teleports: " + amountOfTeleports);
 
         base.Update();
     }

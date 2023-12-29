@@ -205,6 +205,29 @@ public class eventManager : MonoBehaviour
                         if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorOpen"))
                         {
                             //close
+                            /*doorAnim.ResetTrigger("doorOpen");
+                            doorAnim.SetTrigger("doorClose");*/
+                        }
+                        if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorClose"))
+                        {
+                            //open
+                            doorAnim.ResetTrigger("doorClose");
+                            doorAnim.SetTrigger("doorOpen");
+                            door.GetComponent<BoxCollider>().isTrigger = true;
+                        }
+                    }
+                }
+
+                else if (hitInfoClose.transform.gameObject.tag == "DoorPortal")
+                {
+                    GameObject door = hitInfoClose.transform.gameObject;
+                    Animator doorAnim = door.GetComponent<Animator>();
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorOpen"))
+                        {
+                            //close
                             doorAnim.ResetTrigger("doorOpen");
                             doorAnim.SetTrigger("doorClose");
                         }
@@ -231,7 +254,7 @@ public class eventManager : MonoBehaviour
             }
         }*/
 
-        else pickUpText.SetActive(false);
+                else pickUpText.SetActive(false);
                 /*//bookSeen = false;
 
                 if (isBookOpen == true)
