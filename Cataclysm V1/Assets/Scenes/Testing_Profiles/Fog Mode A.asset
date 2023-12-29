@@ -141,16 +141,16 @@ MonoBehaviour:
     value: 1
   _UseHeightFog:
     overrideState: 1
-    value: 0
+    value: 1
   _Height:
     overrideState: 1
-    value: 2.24
+    value: 12.8
   _HeightDensity:
     overrideState: 1
-    value: 0.304
+    value: 0.46
   _HeightFogType:
-    overrideState: 0
-    value: 2
+    overrideState: 1
+    value: 1
   _UseNoise:
     overrideState: 1
     value: 0
