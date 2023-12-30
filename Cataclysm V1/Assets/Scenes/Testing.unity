@@ -2150,6 +2150,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5848512083625454614, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e4ee5d4a9c338e42a089c397022d17c, type: 2}
     - target: {fileID: 7358782182821302472, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5672,7 +5676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4039660877099035546
 GameObject:
   m_ObjectHideFlags: 0

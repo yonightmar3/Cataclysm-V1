@@ -236,7 +236,6 @@ public class eventManager : MonoBehaviour
                             //open
                             doorAnim.ResetTrigger("doorClose");
                             doorAnim.SetTrigger("doorOpen");
-                            door.GetComponent<BoxCollider>().isTrigger = true;
                         }
                     }
                 }
