@@ -30,7 +30,6 @@ public class eventManager : MonoBehaviour
     private bool isBookOpen = false;
     private bool bookSeen = false;
 
-
     //MAZE
     public GameObject player;
     public GameObject pillar1, pillar2, collapse2, collapse3;
@@ -221,6 +220,8 @@ public class eventManager : MonoBehaviour
                 else if (hitInfoClose.transform.gameObject.tag == "DoorPortal")
                 {
                     GameObject door = hitInfoClose.transform.gameObject;
+                    GameObject parentDoor = door.transform.parent.gameObject;
+                    BoxCollider backDoor = parentDoor.GetComponent<BoxCollider>();
                     Animator doorAnim = door.GetComponent<Animator>();
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -228,12 +229,16 @@ public class eventManager : MonoBehaviour
                         if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorOpen"))
                         {
                             //close
+                            backDoor.isTrigger = false;
+
                             doorAnim.ResetTrigger("doorOpen");
                             doorAnim.SetTrigger("doorClose");
                         }
                         if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorClose"))
                         {
                             //open
+                            backDoor.isTrigger = true;
+
                             doorAnim.ResetTrigger("doorClose");
                             doorAnim.SetTrigger("doorOpen");
                         }
