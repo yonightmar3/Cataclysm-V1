@@ -77,7 +77,9 @@ public class BookInteraction : MonoBehaviour
     public GameObject pickUpText;
     private bool isBookOpen = false;
 
+    public GameObject readingBackground;
     public GameObject entropyBook;
+    public GameObject wisdomBook;
 
     void Update()
     {
@@ -98,14 +100,41 @@ public class BookInteraction : MonoBehaviour
 
                         if (isBookOpen)
                         {
+                            //close book
                             InputManager.disabled = true;
+                            readingBackground.SetActive(true);
                             entropyBook.SetActive(true);
                             pickUpText.SetActive(false);
                         }
                         else
                         {
+                            //open book
                             InputManager.disabled = false;
+                            readingBackground.SetActive(false);
                             entropyBook.SetActive(false);
+                            pickUpText.SetActive(true);
+                        }
+                    }
+                }
+                else if (lookingAtClose.name == "Wisdom Book")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        isBookOpen = !isBookOpen;
+
+                        if (isBookOpen)
+                        {
+                            InputManager.disabled = true;
+                            readingBackground.SetActive(true);
+                            wisdomBook.SetActive(true);
+                            pickUpText.SetActive(false);
+                        }
+                        else
+                        {
+                            InputManager.disabled = false;
+                            readingBackground.SetActive(false);
+                            wisdomBook.SetActive(false);
                             pickUpText.SetActive(true);
                         }
                     }
