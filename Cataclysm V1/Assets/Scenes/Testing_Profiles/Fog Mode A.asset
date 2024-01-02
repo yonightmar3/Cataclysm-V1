@@ -80,7 +80,7 @@ MonoBehaviour:
     value: 0
   _FogColor:
     overrideState: 1
-    value: {r: 0.048475128, g: 0.11386021, b: 0.1792453, a: 1}
+    value: {r: 0.16197933, g: 0.26341495, b: 0.3679245, a: 1}
   _GradientStart:
     overrideState: 0
     value: 0
@@ -92,11 +92,11 @@ MonoBehaviour:
     value: {fileID: 2800000, guid: 290fe48d3bcb0b44a9d875023c609fb5, type: 3}
     defaultState: 1
   _UseSunLight:
-    overrideState: 1
+    overrideState: 0
     value: 0
   _SunColor:
     overrideState: 1
-    value: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+    value: {r: 0, g: 0, b: 0, a: 1}
   _SunIntensity:
     overrideState: 1
     value: 0.5
@@ -123,7 +123,7 @@ MonoBehaviour:
     value: 100
   _FogDensity:
     overrideState: 1
-    value: 0.0083
+    value: 0.004
   _UseSkyboxHeightFog:
     overrideState: 1
     value: 1
