@@ -7,6 +7,7 @@ TagManager:
   - Maze Dweller
   - Door
   - DoorPortal
+  - DoorLocked
   layers:
   - Default
   - TransparentFX

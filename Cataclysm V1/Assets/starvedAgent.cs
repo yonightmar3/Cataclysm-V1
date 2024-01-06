@@ -20,12 +20,18 @@ public class starvedAgent : MonoBehaviour
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if(distanceToPlayer <= 15f && distanceToPlayer > 2f)
+        if(eventManager.keyObtained == true)
         {
             starved.isStopped = false;
             starved.destination = player.position;
             starvedAnimator.SetTrigger("running");
         }
+/*        if(distanceToPlayer <= 15f && distanceToPlayer > 2f)
+        {
+            starved.isStopped = false;
+            starved.destination = player.position;
+            starvedAnimator.SetTrigger("running");
+        }*/
         if (distanceToPlayer <= 2f)
         {
             starvedAnimator.SetTrigger("attackRange");

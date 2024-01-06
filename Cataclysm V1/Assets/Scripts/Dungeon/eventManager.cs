@@ -7,6 +7,8 @@ public class eventManager : MonoBehaviour
 {
     //SCRIPT REFERENCES
 
+    public static bool keyObtained = false;
+
     public PlayerLook playerLookScript;
 
     //RUNE PUZZLE ROOM
@@ -111,6 +113,17 @@ public class eventManager : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         StartCoroutine("teleportToLibrary");
+
+                    }
+                }
+                if (lookingAtClose.name == "Key")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        lookingAtClose.gameObject.SetActive(false);
+                        Debug.Log("Key Obtained");
+                        keyObtained = true;
 
                     }
                 }
@@ -243,6 +256,37 @@ public class eventManager : MonoBehaviour
                             doorAnim.ResetTrigger("doorClose");
                             doorAnim.SetTrigger("doorOpen");
                         }
+                    }
+                }
+
+                else if (hitInfoClose.transform.gameObject.tag == "DoorLocked")
+                {
+                    GameObject door = hitInfoClose.transform.gameObject;
+                    GameObject parentDoor = door.transform.parent.gameObject;
+                    BoxCollider backDoor = parentDoor.GetComponent<BoxCollider>();
+                    Animator doorAnim = door.GetComponent<Animator>();
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E) && keyObtained == true)
+                    {
+                        if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorOpen"))
+                        {
+                            //close
+                            backDoor.isTrigger = false;
+
+                            doorAnim.ResetTrigger("doorOpen");
+                            doorAnim.SetTrigger("doorClose");
+                        }
+                        if (doorAnim.GetCurrentAnimatorStateInfo(0).IsName("doorClose"))
+                        {
+                            //open
+                            backDoor.isTrigger = true;
+
+                            doorAnim.ResetTrigger("doorClose");
+                            doorAnim.SetTrigger("doorOpen");
+                        }
+                    } else if (Input.GetKeyDown(KeyCode.E) && keyObtained != true)
+                    {
+                        Debug.Log("key missing");
                     }
                 }
                 //else if (hitInfoClose.transform.gameObject.name == "Entropy Book")
