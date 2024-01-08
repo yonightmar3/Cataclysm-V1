@@ -1,71 +1,3 @@
-/*using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class bookInteraction : MonoBehaviour
-{
-    public PlayerLook playerLookScript;
-    private GameObject lookingAtClose;
-    public GameObject pickUpText;
-    private bool isBookOpen = false;
-    private bool bookSeen = false;
-
-
-    public GameObject entropyBook;
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (playerLookScript != null)
-        {
-            // Access the HitInfo property from the PlayerLook script
-            RaycastHit hitInfoClose = playerLookScript.HitInfoClose;
-
-            if (hitInfoClose.collider != null)
-            {
-                lookingAtClose = hitInfoClose.transform.gameObject;
-
-                if (lookingAtClose.name == "Entropy Book")
-                {
-                    pickUpText.SetActive(true);
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        Debug.Log("book");
-
-                        entropyBook.SetActive(true);
-                        pickUpText.SetActive(false);
-                        isBookOpen = true;
-                    }
-                }
-                else pickUpText.SetActive(false);
-            }
-
-            
-
-        }
-
-        //bookSeen = false;
-
-        if (isBookOpen == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-
-                // Close the book
-                entropyBook.SetActive(false);
-                pickUpText.SetActive(true);
-                isBookOpen = false;
-                //bookSeen = false;
-            }
-        }
-
-
-    }
-}
-*/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -80,6 +12,10 @@ public class BookInteraction : MonoBehaviour
     public GameObject readingBackground;
     public GameObject entropyBook;
     public GameObject wisdomBook;
+    public GameObject soulBook;
+    public GameObject fateBook;
+
+
 
     void Update()
     {
@@ -135,6 +71,52 @@ public class BookInteraction : MonoBehaviour
                             InputManager.disabled = false;
                             readingBackground.SetActive(false);
                             wisdomBook.SetActive(false);
+                            pickUpText.SetActive(true);
+                        }
+                    }
+                }
+                else if (lookingAtClose.name == "Soul Book")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        isBookOpen = !isBookOpen;
+
+                        if (isBookOpen)
+                        {
+                            InputManager.disabled = true;
+                            readingBackground.SetActive(true);
+                            soulBook.SetActive(true);
+                            pickUpText.SetActive(false);
+                        }
+                        else
+                        {
+                            InputManager.disabled = false;
+                            readingBackground.SetActive(false);
+                            soulBook.SetActive(false);
+                            pickUpText.SetActive(true);
+                        }
+                    }
+                }
+                else if (lookingAtClose.name == "Fate Book")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        isBookOpen = !isBookOpen;
+
+                        if (isBookOpen)
+                        {
+                            InputManager.disabled = true;
+                            readingBackground.SetActive(true);
+                            fateBook.SetActive(true);
+                            pickUpText.SetActive(false);
+                        }
+                        else
+                        {
+                            InputManager.disabled = false;
+                            readingBackground.SetActive(false);
+                            fateBook.SetActive(false);
                             pickUpText.SetActive(true);
                         }
                     }

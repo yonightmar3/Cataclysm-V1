@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &172897000
 Transform:
   m_ObjectHideFlags: 0
@@ -2988,7 +2988,7 @@ MonoBehaviour:
   player: {fileID: 1052904954}
   reciever: {fileID: 1374335073}
   teleported: 0
-  otherPortal: {fileID: 0}
+  otherPortal: {fileID: 2004230249}
 --- !u!65 &1082260836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3503,7 +3503,7 @@ MonoBehaviour:
   player: {fileID: 1052904954}
   reciever: {fileID: 1082260834}
   teleported: 0
-  otherPortal: {fileID: 0}
+  otherPortal: {fileID: 1019117529}
 --- !u!65 &1374335075
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5719,7 +5719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4039660877099035546
 GameObject:
   m_ObjectHideFlags: 0

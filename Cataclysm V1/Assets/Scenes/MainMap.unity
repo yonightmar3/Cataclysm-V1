@@ -328,8 +328,28 @@ PrefabInstance:
       value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5732447557044881895, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732447557044881895, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
+      propertyPath: far clip plane
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732447557044881895, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_BackGroundColor.a
-      value: 0.4745098
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732447557044881895, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732447557044881895, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732447557044881895, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5801354454981771247, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_IsActive
@@ -1231,9 +1251,9 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
-    m_Resolution: -1
+    m_Resolution: 1
     m_CustomResolution: -1
-    m_Strength: 0.5
+    m_Strength: 0
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -1263,7 +1283,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

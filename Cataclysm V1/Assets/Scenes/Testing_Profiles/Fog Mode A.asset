@@ -80,7 +80,7 @@ MonoBehaviour:
     value: 0
   _FogColor:
     overrideState: 1
-    value: {r: 0.16197933, g: 0.26341495, b: 0.3679245, a: 1}
+    value: {r: 0.029696202, g: 0.07476059, b: 0.122641504, a: 1}
   _GradientStart:
     overrideState: 0
     value: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
     value: 100
   _FogDensity:
     overrideState: 1
-    value: 0.004
+    value: 0.01
   _UseSkyboxHeightFog:
     overrideState: 1
     value: 1
