@@ -116,7 +116,7 @@ public class eventManager : MonoBehaviour
 
                     }
                 }
-                if (lookingAtClose.name == "Key")
+                else if (lookingAtClose.name == "Key")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -289,47 +289,8 @@ public class eventManager : MonoBehaviour
                         Debug.Log("key missing");
                     }
                 }
-                //else if (hitInfoClose.transform.gameObject.name == "Entropy Book")
-                //{
-                /*pickUpText.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    Debug.Log("book");
-
-                    entropyBook.SetActive(true);
-                    pickUpText.SetActive(false);
-                    isBookOpen = true;
-                }
-            }
-        }*/
 
                 else pickUpText.SetActive(false);
-                /*//bookSeen = false;
-
-                if (isBookOpen == true)
-                {
-                    if (Input.GetKeyDown(KeyCode.Escape))
-                    {
-
-                        // Close the book
-                        entropyBook.SetActive(false);
-                        pickUpText.SetActive(true);
-                        isBookOpen = false;
-                        bookSeen = false;
-
-
-                        // Toggle the book state
-                        //isBookOpen = !isBookOpen;
-                    }
-                }*/
-
-
-
-                /*                if (Input.GetKeyDown(KeyCode.F))
-                                {
-                                    Cursor.visible = false;
-                                    entropyBook.SetActive(false);
-                                }*/
 
                 if (rune4 == false && runeCounter == 4)
                 {
@@ -345,7 +306,6 @@ public class eventManager : MonoBehaviour
                     descendingDoor.SetTrigger("puzzle1wallDescend");
                 }
 
-                //else Debug.Log(":(");
             }
 
         }

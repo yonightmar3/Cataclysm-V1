@@ -7,7 +7,7 @@ public class portalTeleporter : MonoBehaviour
 
 	public Transform player;
 	public Transform reciever;
-	public bool teleported;
+	public bool teleported = false;
 
 	public GameObject otherPortal;
 
@@ -37,6 +37,7 @@ public class portalTeleporter : MonoBehaviour
 
 				playerIsOverlapping = false;
 			}
+			//else teleported = false;
 		}
 	}
 
@@ -45,7 +46,6 @@ public class portalTeleporter : MonoBehaviour
 		{
 			if (other.tag == "Player")
 			{
-				Debug.Log("triggered");
 				playerIsOverlapping = true;
 				//otherPortal.SetActive(false);
 			}
@@ -65,7 +65,6 @@ public class portalTeleporter : MonoBehaviour
 			InputManager.disabled = true;
 			yield return new WaitForSeconds(0.01f);
 			player.transform.position = new Vector3(reciever.position.x, reciever.position.y, reciever.position.z) + positionOffset;
-			Debug.Log("player teleported");
 			yield return new WaitForSeconds(0.01f);
 			InputManager.disabled = false;
 		}

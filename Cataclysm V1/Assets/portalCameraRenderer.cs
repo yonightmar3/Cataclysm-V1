@@ -4,36 +4,27 @@ using UnityEngine;
 
 public class portalCameraRenderer : MonoBehaviour
 {
-    public List<Camera> cameras = new List<Camera>();
-    public GameObject AlchemyA;
-    public GameObject AlchemyB;
+    public PlayerLook playerLookScript;
+    private GameObject lookingAtPortal;
 
-    private void Start()
+    public GameObject cameraToEuclidean;
+
+
+    private void Update()
     {
-        foreach (Camera camera in cameras)
+        if (playerLookScript != null)
         {
-            camera.gameObject.SetActive(false);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            foreach (Camera camera in cameras)
+            // Access the HitInfo property from the PlayerLook script
+            RaycastHit hitInfoFar = playerLookScript.HitInfoFar;
+            if (hitInfoFar.collider != null)
             {
-                camera.gameObject.SetActive(true);
-            }
-
-        }
-
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            foreach (Camera camera in cameras)
-            {
-                camera.gameObject.SetActive(false);
+                lookingAtPortal = hitInfoFar.transform.gameObject;
+                if (lookingAtPortal.transform.gameObject.name == "Render Plane to Euclid")
+                {
+                    Debug.Log("working cam");
+                    cameraToEuclidean.SetActive(true);
+                }
+                else cameraToEuclidean.SetActive(false);
             }
         }
     }
