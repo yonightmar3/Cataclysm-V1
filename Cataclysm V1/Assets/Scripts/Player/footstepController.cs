@@ -23,7 +23,7 @@ public class footstepController : MonoBehaviour
         if (InputManager.disabled == false)
         {
 
-            Debug.Log(portalTeleporterScript);
+            //Debug.Log(portalTeleporterScript);
 
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
             {
