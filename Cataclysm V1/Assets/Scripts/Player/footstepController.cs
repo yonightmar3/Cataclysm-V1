@@ -9,14 +9,6 @@ public class footstepController : MonoBehaviour
     public AudioSource footstepsDungeon;
     public AudioSource footstepsDungeon2;
     
-    private portalTeleporter portalTeleporterScript;
-    
-
-    void Start()
-    {
-        // Assuming portalTeleporter is attached to the same GameObject as footstepController
-        portalTeleporterScript = GetComponent<portalTeleporter>();
-    }
     // Update is called once per frame
     void Update()
     {
@@ -49,16 +41,20 @@ public class footstepController : MonoBehaviour
 
             footstepsDungeon.enabled = true;
             yield return new WaitForSeconds(0.75f);
-            //if (SceneManager.GetActiveScene().name == "Dungeon"){
-            //Debug.Log("moving");
             footstepsDungeon2.enabled = true;
+            yield return new WaitForSeconds(0.75f);
+
 
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.name == "Teleporter")
+        if (other!=null)
         {
             StopCoroutine("footstepsAudio");
+            footstepsDungeon.enabled = false;
+            footstepsDungeon2.enabled = false;
+
         }
     }
 

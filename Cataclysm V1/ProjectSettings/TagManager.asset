@@ -8,6 +8,7 @@ TagManager:
   - Door
   - DoorPortal
   - DoorLocked
+  - Teleporter
   layers:
   - Default
   - TransparentFX

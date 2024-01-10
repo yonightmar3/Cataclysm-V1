@@ -637,7 +637,6 @@ public class eventManager : MonoBehaviour
                 }
                 if (rune1 == true)
                 {
-                    Debug.Log("works");
                     descendingDoor.SetTrigger("puzzle1wallDescend");
                 }
 
