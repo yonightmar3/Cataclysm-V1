@@ -11,7 +11,7 @@ public class RepeatingHallway : portalTeleporter
     private void Update()
     {
         if (teleported == true){
-            Debug.Log("please work");
+            Debug.Log(teleported);
             appearableWall.SetActive(true);
             amountOfTeleports++;
             teleported = false;

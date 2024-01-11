@@ -7,7 +7,7 @@ public class portalTeleporter : MonoBehaviour
 
 	public Transform player;
 	public Transform reciever;
-	public bool teleported = false;
+	public bool teleported;
 
 	public GameObject otherPortal;
 
