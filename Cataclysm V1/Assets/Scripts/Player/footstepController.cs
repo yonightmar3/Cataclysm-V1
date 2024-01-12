@@ -38,22 +38,23 @@ public class footstepController : MonoBehaviour
 
     IEnumerator footstepsAudio()
     {
-
             footstepsDungeon.enabled = true;
             yield return new WaitForSeconds(0.75f);
             footstepsDungeon2.enabled = true;
             yield return new WaitForSeconds(0.75f);
 
 
+
+
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other!=null)
         {
             StopCoroutine("footstepsAudio");
-            footstepsDungeon.enabled = false;
-            footstepsDungeon2.enabled = false;
+
 
         }
     }
