@@ -60,18 +60,6 @@ public class PlayerLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check for button press (you can customize this based on your input method)
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            // Toggle the menu state
-            SceneManager.LoadScene("Dungeon");
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            // Toggle the menu state
-            SceneManager.LoadScene("Testing");
-        }
-
 
         Vector3 cameraDirection = cam.transform.forward;
 
