@@ -62,6 +62,7 @@ public class mazeDweller : MonoBehaviour
                 {
                     //player didn't hide quikly enuff and monster jumpscares
                     //Debug.Log("hid poorly");
+                    monster.destination = player.position;
                 }
             } 
             

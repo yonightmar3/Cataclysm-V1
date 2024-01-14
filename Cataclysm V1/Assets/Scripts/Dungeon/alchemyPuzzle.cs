@@ -7,12 +7,15 @@ public class alchemyPuzzle : MonoBehaviour
     public PlayerLook playerLookScript;
     public GameObject pickUpText;
     private GameObject lookingAtClose;
+    public GameObject jumpscare;
 
     private bool carrying;
 
     private bool saltCrystal;
     private bool bluejayFeather;
     private bool blackEgg;
+
+    public GameObject shadowRing;
 
     private bool lizardTail;
 
@@ -130,8 +133,22 @@ public class alchemyPuzzle : MonoBehaviour
             if (!wrongIngredient)
             {
                 Debug.Log("successfully made potion");
+                shadowRing.SetActive(true);
             }
             else Debug.Log("messed up");
+            StartCoroutine("jumpscareText");
         }
     }
+    IEnumerator jumpscareText()
+    {
+        InputManager.disabled = true;
+        yield return new WaitForSeconds(.1f);
+        jumpscare.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        jumpscare.SetActive(false);
+        InputManager.disabled = false;
+    }
 }
+
+
+
