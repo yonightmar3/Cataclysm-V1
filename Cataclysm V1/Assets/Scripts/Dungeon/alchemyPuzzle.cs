@@ -14,24 +14,19 @@ public class alchemyPuzzle : MonoBehaviour
     private bool bluejayFeather;
     private bool blackEgg;
 
+    private bool lizardTail;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool wrongIngredient;
+
+    private int ingredientsDeposited = 0;
 
     // Update is called once per frame
     void Update()
     {
         if (playerLookScript != null)
         {
-            // Access the HitInfo property from the PlayerLook script
             RaycastHit hitInfoClose = playerLookScript.HitInfoClose;
-
-
-            // Now you can use hitInfo in this script
 
             if (hitInfoClose.collider != null)
             {
@@ -43,9 +38,13 @@ public class alchemyPuzzle : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        saltCrystal = true;
-                        lookingAtClose.SetActive(false);
-                        Debug.Log("salt crystal obtained");
+                        if(carrying == false)
+                        {
+                            saltCrystal = true;
+                            carrying = true;
+                            lookingAtClose.SetActive(false);
+                            Debug.Log("salt crystal obtained");
+                        }                     
                     }
                 }
                 else if (lookingAtClose.name == "Bluejay Feather")
@@ -68,14 +67,71 @@ public class alchemyPuzzle : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        blackEgg = true;
-                        lookingAtClose.SetActive(false);
-                        Debug.Log("black egg feather obtained");
+
+                        if (carrying == false)
+                        {
+                            carrying = true;
+                            blackEgg = true;
+                            lookingAtClose.SetActive(false);
+                            Debug.Log("carrying: " + carrying);
+                            Debug.Log("black egg feather obtained");
+                        }
+                        
                     }
                 }
+                else if (lookingAtClose.name == "Lizard Tail")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+
+                        if (carrying == false)
+                        {
+                            carrying = true;
+                            lizardTail = true;
+                            lookingAtClose.SetActive(false);
+                            Debug.Log("carrying: " + carrying);
+                            Debug.Log("lizard tail obtained");
+                        }
+
+                    }
+                }
+
+                else if (lookingAtClose.name == "Cauldron")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        if(carrying == true)
+                        {
+                            ingredientsDeposited++;
+                            Debug.Log("Ingredients deposited: " + ingredientsDeposited);
+                            if (saltCrystal || bluejayFeather || blackEgg)
+                            {
+                                Debug.Log("correct ingredient");
+                                carrying = false;
+                            }
+                            if(lizardTail){
+                                Debug.Log("wrong ingredient");
+                                carrying = false;
+                                wrongIngredient = true;
+                            }                           
+                        }                      
+                    }
+                }
+
+
                 else pickUpText.SetActive(false);
             }
             else pickUpText.SetActive(false);
+        }
+        if (ingredientsDeposited == 3)
+        {
+            if (!wrongIngredient)
+            {
+                Debug.Log("successfully made potion");
+            }
+            else Debug.Log("messed up");
         }
     }
 }

@@ -121,6 +121,7 @@ public class BookInteraction : MonoBehaviour
                         }
                     }
                 }
+
                 else
                 {
                     pickUpText.SetActive(false);
