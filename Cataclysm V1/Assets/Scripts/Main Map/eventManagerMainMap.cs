@@ -17,6 +17,11 @@ public class eventManagerMainMap : MonoBehaviour
     private GameObject lookingAtFar;
     private GameObject lookingAtClose;
 
+    public GameObject wizardBook;
+    public GameObject readingBackground;
+    private bool isBookOpen;
+
+    public GameObject Gabriel;
 
 
     private void Update()
@@ -65,7 +70,36 @@ public class eventManagerMainMap : MonoBehaviour
                         }
                     }
                 }
+                else if (hitInfoClose.transform.gameObject.name == "Wizard Book")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+
+                        isBookOpen = !isBookOpen;
+
+                        if (isBookOpen)
+                        {
+                            //open book
+                            InputManager.disabled = true;
+                            readingBackground.SetActive(true);
+                            wizardBook.SetActive(true);
+                            pickUpText.SetActive(false);
+                            Gabriel.SetActive(true);
+                        }
+                        else
+                        {
+                            //close book
+                            InputManager.disabled = false;
+                            readingBackground.SetActive(false);
+                            wizardBook.SetActive(false);
+                            pickUpText.SetActive(true);
+                        }
+                    }
+                }
+                else pickUpText.SetActive(false);
             }
+            else pickUpText.SetActive(false);
         }
     }
                

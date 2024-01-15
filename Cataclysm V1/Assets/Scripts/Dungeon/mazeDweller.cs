@@ -10,6 +10,8 @@ public class mazeDweller : MonoBehaviour
     private NavMeshAgent monster;
     public GameObject deathScreen;
 
+    public Transform spawnPoint;
+
     public Transform bridge;
     /*public Transform spawn;
     private Transform spawnTest;*/
@@ -86,6 +88,7 @@ public class mazeDweller : MonoBehaviour
         //playerSeen = false;
         Cursor.visible = true;
         isMoving = false;
+        monster.transform.position = spawnPoint.position;
     }
 
     bool IsOnNavMesh(Vector3 position)

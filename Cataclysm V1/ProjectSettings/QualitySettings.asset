@@ -296,7 +296,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 3
     name: Sigma
-    pixelLightCount: 8
+    pixelLightCount: 4
     shadows: 1
     shadowResolution: 3
     shadowProjection: 1

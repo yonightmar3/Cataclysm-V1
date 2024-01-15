@@ -16,7 +16,6 @@ public class BookInteraction : MonoBehaviour
     public GameObject fateBook;
 
 
-
     void Update()
     {
         if (playerLookScript != null)
