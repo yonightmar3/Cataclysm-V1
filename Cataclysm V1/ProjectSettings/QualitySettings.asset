@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 5
+  m_CurrentQuality: 6
   m_QualitySettings:
   - serializedVersion: 3
     name: Very Low
@@ -296,15 +296,15 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 3
     name: Sigma
-    pixelLightCount: 4
+    pixelLightCount: 8
     shadows: 1
-    shadowResolution: 1
+    shadowResolution: 3
     shadowProjection: 1
     shadowCascades: 4
     shadowDistance: 150
     shadowNearPlaneOffset: 3
     shadowCascade2Split: 0.33333334
-    shadowCascade4Split: {x: 0.54989785, y: 0.7998481, z: 0.94989765}
+    shadowCascade4Split: {x: 0.21656452, y: 0.48608547, z: 0.71757436}
     shadowmaskMode: 1
     skinWeights: 4
     globalTextureMipmapLimit: 2
@@ -344,8 +344,8 @@ QualitySettings:
     excludedTargetPlatforms: []
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
-    Android: 0
-    Server: 0
-    Standalone: 0
+    Android: 6
+    Server: 6
+    Standalone: 6
     WebGL: 0
-    iPhone: 0
+    iPhone: 6
