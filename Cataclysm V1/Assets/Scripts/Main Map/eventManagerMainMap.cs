@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class eventManagerMainMap : MonoBehaviour
 {
     //SCRIPT REFERENCES
 
-    
+    public dialogue dialogueScript;
+
 
     public PlayerLook playerLookScript;
 
@@ -22,10 +24,50 @@ public class eventManagerMainMap : MonoBehaviour
     private bool isBookOpen;
 
     public GameObject Gabriel;
+    public GameObject GabrielHead;
 
+
+    public GameObject dialogueBox;
+    public TextMeshProUGUI dialogueText;  // Reference to the TextMeshProUGUI component for displaying text
+    private KeyCode nextDialogueKey = KeyCode.Space;  // Key to trigger the next dialogue
+    private List<string> dialogues = new List<string>();  // List to store dialogues
+    private int currentDialogueIndex = 0;  // Index of the current dialogue
+    private bool dialogueInitiated;
+
+    public Transform playerTransform;
+    public float rotationSpeed = 5f;
+
+
+    private void Start()
+    {
+        dialogues.Add("Tomorrow's tale lies fallow, an abandoned parchment shunned by fate's indifference");
+        dialogues.Add("In the dance of frailty, shadows find willing partners, and virtue's fabric frays");
+    }
 
     private void Update()
     {
+
+            if (Gabriel != null && playerTransform != null)
+            {
+                // Create a target rotation
+                Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
+                directionToTarget.y = 0f; // Keep only X and Z components
+                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+                // Smoothly rotate the player towards the target on the X and Z axes
+                playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+        
+        if (dialogueInitiated)
+        {
+            InputManager.disabled = true;
+            if (Input.GetKeyDown(nextDialogueKey))
+            {
+                Debug.Log("next dialogue????");
+                // Display the next dialogue
+                ShowNextDialogue();
+            }
+        }
         if (playerLookScript != null)
         {
             // Access the HitInfo property from the PlayerLook script
@@ -70,6 +112,23 @@ public class eventManagerMainMap : MonoBehaviour
                         }
                     }
                 }
+                else if (hitInfoClose.transform.gameObject.name == "Gabriel")
+                {
+
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        dialogueInitiated = true;
+                        Gabriel.gameObject.GetComponent<BoxCollider>().enabled = false;
+                        
+                        dialogueBox.SetActive(true);
+                        pickUpText.SetActive(false);
+                        //InputManager.disabled = true;
+                        // Check if the next dialogue key is pressed
+
+
+                    }
+                }
                 else if (hitInfoClose.transform.gameObject.name == "Wizard Book")
                 {
                     pickUpText.SetActive(true);
@@ -102,5 +161,60 @@ public class eventManagerMainMap : MonoBehaviour
             else pickUpText.SetActive(false);
         }
     }
-               
+    /*    void ShowNextDialogue()
+        {
+            Debug.Log("current dialogue index: " + currentDialogueIndex);
+            // Check if there are more dialogues to display
+            if (currentDialogueIndex < dialogues.Count)
+            {
+
+                // Display the current dialogue text
+                dialogueText.text = dialogues[currentDialogueIndex];
+
+                // Increment the dialogue index for the next time
+                currentDialogueIndex++;
+            }
+            else
+            {
+    *//*            // No more dialogues, hide the dialogue panel
+                dialogue.SetActive(false);*//*
+            }
+        }*/
+    void ShowNextDialogue()
+    {
+        Debug.Log("current dialogue index: " + currentDialogueIndex);
+
+        // Check if there are more dialogues to display
+        if (currentDialogueIndex < dialogues.Count)
+        {
+            // Display the current dialogue text with typewriter effect
+            dialogueScript.SetNewText(dialogues[currentDialogueIndex]);
+
+            // Increment the dialogue index for the next time
+            currentDialogueIndex++;
+        }
+        else
+        {
+            // No more dialogues, hide the dialogue panel or perform other actions
+            // For now, let's just log a message
+            Debug.Log("No more dialogues");
+            dialogueInitiated = false;
+        }
+    }
+
+    void turnToGabe()
+    {
+        if (Gabriel != null && playerTransform != null)
+        {
+            // Create a target rotation
+            Vector3 directionToTarget = Gabriel.gameObject.transform.position - playerTransform.position;
+            directionToTarget.y = 0f; // Keep only X and Z components
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+            // Smoothly rotate the player towards the target on the X and Z axes
+            playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+
 }
