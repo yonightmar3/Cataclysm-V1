@@ -80,7 +80,7 @@ public class PlayerLook : MonoBehaviour
             HitInfoFar = new RaycastHit(); // You might want to set a default value based on your requirements
         }
 
-        if (Physics.Raycast(cam.transform.position, cameraDirection, out hitClose, 3f))
+        if (Physics.Raycast(cam.transform.position, cameraDirection, out hitClose, 1.5f))
         {
             // Assign the local variable to the class property
             HitInfoClose = hitFar;

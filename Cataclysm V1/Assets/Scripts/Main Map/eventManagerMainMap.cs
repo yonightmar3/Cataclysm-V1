@@ -70,6 +70,7 @@ public class eventManagerMainMap : MonoBehaviour
                 // Display the next dialogue
                 ShowNextDialogue();
             }
+
         }
         if (gabrielSequenceReady)
         {
@@ -119,23 +120,7 @@ public class eventManagerMainMap : MonoBehaviour
                         }
                     }
                 }
-                else if (hitInfoClose.transform.gameObject.name == "Gabriel")
-                {
 
-                    pickUpText.SetActive(true);
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        /*dialogueInitiated = true;
-                        Gabriel.gameObject.GetComponent<BoxCollider>().enabled = false;
-                        
-                        dialogueBox.SetActive(true);*/
-                        pickUpText.SetActive(false);
-                        //InputManager.disabled = true;
-                        // Check if the next dialogue key is pressed
-
-
-                    }
-                }
                 else if (hitInfoClose.transform.gameObject.name == "Wizard Book")
                 {
                     pickUpText.SetActive(true);
@@ -207,29 +192,38 @@ public class eventManagerMainMap : MonoBehaviour
             // No more dialogues, hide the dialogue panel or perform other actions
             // For now, let's just log a message
             Debug.Log("No more dialogues");
+            gabrielSequenceReady = false;
+            StopAllCoroutines();
             dialogueInitiated = false;
+            InputManager.disabled = false;
+            dialogueBox.SetActive(false);
         }
     }
 
     void turnToGabe()
     {
-        Debug.Log("turning to gabe");
         if (Gabriel != null && playerTransform != null)
         {
-            /*// Create a target rotation
-            Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
-            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
-            // Smoothly rotate the player towards the target on all axes
-            playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
-            // Create a target rotation
+            /*            Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
+
+                        // Use Quaternion.LookRotation without modifying the Y component
+                        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+                        // Smoothly rotate the player towards the target on all axes
+                        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
+
             Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
 
             // Use Quaternion.LookRotation without modifying the Y component
             Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
-            // Smoothly rotate the player towards the target on all axes
+            // Set the Y component of the targetRotation to the current Y rotation of the player
+            targetRotation.eulerAngles = new Vector3(0f, targetRotation.eulerAngles.y, 0f);
+
+            // Smoothly rotate the player towards the target only on the Y-axis
             playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
         }
     }
 
