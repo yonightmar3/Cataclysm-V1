@@ -7,6 +7,10 @@ using TMPro;
 
 public class eventManagerMainMap : MonoBehaviour
 {
+    public static bool returnedFromDungeon;
+    public GameObject bridge;
+
+    private GameObject player;
     //SCRIPT REFERENCES
     public dialogue dialogueScript;
 
@@ -43,6 +47,7 @@ public class eventManagerMainMap : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.Find("Player");
         dialogues.Add("Impossible, yet it manifests. A fractured fate's fatal figure.");
         dialogues.Add("In the dance of frailty, shadows find willing partners, and virtue's fabric frays.");
         dialogues.Add("Beyond reason, yet feasible. Inconceivable, yet tangible...");
@@ -50,6 +55,12 @@ public class eventManagerMainMap : MonoBehaviour
 
     private void Update()
     {
+        if (returnedFromDungeon)
+        {
+            StartCoroutine(teleportFromDungeon());
+            bridge.SetActive(true);
+            returnedFromDungeon = false;
+        }
 
             /*if (Gabriel != null && playerTransform != null)
             {
@@ -95,7 +106,7 @@ public class eventManagerMainMap : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-
+                        player.transform.position = new Vector3(0, 0, 0);
                         SceneManager.LoadScene("Dungeon");
 
                     }
@@ -240,6 +251,16 @@ public class eventManagerMainMap : MonoBehaviour
         dialogueInitiated = true;
         //Gabriel.gameObject.GetComponent<BoxCollider>().enabled = false;
         dialogueBox.SetActive(true);
+    }
+
+    IEnumerator teleportFromDungeon()
+    {
+        //InputManager.disabled = true;
+        yield return new WaitForSeconds(0.1f);
+        player.transform.position = new Vector3(871, 33, 903);
+        Debug.Log("player teleported");
+        yield return new WaitForSeconds(0.1f);
+        InputManager.disabled = false;
     }
 
 

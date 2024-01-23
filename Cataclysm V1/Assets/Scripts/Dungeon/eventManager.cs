@@ -297,8 +297,8 @@ public class eventManager : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        eventManagerMainMap.returnedFromDungeon = true;
                         SceneManager.LoadScene("MainMap");
-                        player.transform.position = new Vector3(0, 0, 0);
                     }
                 }
 
