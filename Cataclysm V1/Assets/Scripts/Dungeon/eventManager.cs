@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 
 public class eventManager : MonoBehaviour
@@ -288,6 +290,15 @@ public class eventManager : MonoBehaviour
                     else if (Input.GetKeyDown(KeyCode.E) && keyObtained != true)
                     {
                         Debug.Log("key missing");
+                    }
+                }
+                else if (hitInfoClose.transform.gameObject.name == "PortalToMain")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        SceneManager.LoadScene("MainMap");
+                        player.transform.position = new Vector3(0, 0, 0);
                     }
                 }
 

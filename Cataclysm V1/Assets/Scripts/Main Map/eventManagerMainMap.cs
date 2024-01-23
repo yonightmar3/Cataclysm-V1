@@ -8,7 +8,6 @@ using TMPro;
 public class eventManagerMainMap : MonoBehaviour
 {
     //SCRIPT REFERENCES
-
     public dialogue dialogueScript;
 
 
@@ -96,6 +95,7 @@ public class eventManagerMainMap : MonoBehaviour
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+
                         SceneManager.LoadScene("Dungeon");
 
                     }
@@ -207,16 +207,16 @@ public class eventManagerMainMap : MonoBehaviour
     {
         if (Gabriel != null && playerTransform != null)
         {
-            //FOR TRAILER<TRIPPY MOVEMENT>
+            /*            //FOR TRAILER<TRIPPY MOVEMENT>
+                        Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
+
+                        // Use Quaternion.LookRotation without modifying the Y component
+                        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+                        // Smoothly rotate the player towards the target on all axes
+                        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
+
             Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
-
-            // Use Quaternion.LookRotation without modifying the Y component
-            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-
-            // Smoothly rotate the player towards the target on all axes
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-/*            Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
 
             // Use Quaternion.LookRotation without modifying the Y component
             Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
@@ -225,7 +225,7 @@ public class eventManagerMainMap : MonoBehaviour
             targetRotation.eulerAngles = new Vector3(0f, targetRotation.eulerAngles.y, 0f);
 
             // Smoothly rotate the player towards the target only on the Y-axis
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
+            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         }
     }
