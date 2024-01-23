@@ -22,8 +22,15 @@ public class dragonFlight : MonoBehaviour
         {
             transform.Translate(direction * speed * Time.deltaTime);
             skyWhaleAnimator.SetTrigger("beginFlight");
-            whaleSounds.Play();
+            whaleSounds.enabled = true;
+            StartCoroutine(wait());
         }
         // Move the object in the specified direction
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(30);
+        Destroy(this.gameObject);
     }
 }
