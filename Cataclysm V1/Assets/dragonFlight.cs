@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class dragonFlight : MonoBehaviour
 {
+    public static bool readyForFlight;
+    public Animator skyWhaleAnimator;
+    public AudioSource whaleSounds;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +18,12 @@ public class dragonFlight : MonoBehaviour
 
     void Update()
     {
+        if (readyForFlight)
+        {
+            transform.Translate(direction * speed * Time.deltaTime);
+            skyWhaleAnimator.SetTrigger("beginFlight");
+            whaleSounds.Play();
+        }
         // Move the object in the specified direction
-        transform.Translate(direction * speed * Time.deltaTime);
     }
 }

@@ -39,6 +39,8 @@ public class eventManagerMainMap : MonoBehaviour
 
     private bool gabrielSequenceReady;
 
+    public GameObject exitDoor;
+
 
     private void Start()
     {
@@ -197,6 +199,7 @@ public class eventManagerMainMap : MonoBehaviour
             dialogueInitiated = false;
             InputManager.disabled = false;
             dialogueBox.SetActive(false);
+            exitDoor.SetActive(true);
         }
     }
 
@@ -204,7 +207,7 @@ public class eventManagerMainMap : MonoBehaviour
     {
         if (Gabriel != null && playerTransform != null)
         {
-
+            //FOR TRAILER<TRIPPY MOVEMENT>
             /*            Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
 
                         // Use Quaternion.LookRotation without modifying the Y component
