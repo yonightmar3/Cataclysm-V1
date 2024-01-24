@@ -22,7 +22,11 @@ public class alchemyPuzzle : MonoBehaviour
 
     private bool wrongIngredient;
 
+    public GameObject fireRed;
+
     private int ingredientsDeposited = 0;
+
+    public GameObject leaveDungeonPortal;
 
     // Update is called once per frame
     void Update()
@@ -116,10 +120,20 @@ public class alchemyPuzzle : MonoBehaviour
                             }
                             if(lizardTail){
                                 Debug.Log("wrong ingredient");
+                                StartCoroutine(wrongIngredientFire());
                                 carrying = false;
                                 wrongIngredient = true;
                             }                           
                         }                      
+                    }
+                }
+
+                else if (lookingAtClose.name == "Shadow Ring")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        leaveDungeonPortal.SetActive(true);
                     }
                 }
 
@@ -138,6 +152,8 @@ public class alchemyPuzzle : MonoBehaviour
             else Debug.Log("messed up");
             StartCoroutine("jumpscareText");
         }
+
+
     }
     IEnumerator jumpscareText()
     {
@@ -147,6 +163,14 @@ public class alchemyPuzzle : MonoBehaviour
         yield return new WaitForSeconds(1f);
         jumpscare.SetActive(false);
         InputManager.disabled = false;
+    }
+
+    IEnumerator wrongIngredientFire()
+    {
+        fireRed.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        fireRed.SetActive(false);
+
     }
 }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.004442935, g: 0.019058453, b: 0.021729823, a: 1}
+  m_IndirectSpecularColor: {r: 0.0012166342, g: 0.0044051358, b: 0.0048720245, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -483,6 +483,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4853711476781775611, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
+      propertyPath: sounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5357679432507297250, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.01
@@ -572,7 +576,8 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7608011247629822374, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1438544820117969420, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
@@ -18193,10 +18198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Chasing shadows, a dance with echoes, where purpose wanes like fading
-    stars
-
-'
+  m_text: Impossible, yet it has manifested. A fractured fate's fatal figure.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32a45529e32330244b042fd01b04e5e9, type: 2}
   m_sharedMaterial: {fileID: 727595919607705020, guid: 32a45529e32330244b042fd01b04e5e9, type: 2}

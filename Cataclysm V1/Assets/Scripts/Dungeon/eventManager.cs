@@ -292,15 +292,6 @@ public class eventManager : MonoBehaviour
                         Debug.Log("key missing");
                     }
                 }
-                else if (hitInfoClose.transform.gameObject.name == "PortalToMain")
-                {
-                    pickUpText.SetActive(true);
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        eventManagerMainMap.returnedFromDungeon = true;
-                        SceneManager.LoadScene("MainMap");
-                    }
-                }
 
                 else pickUpText.SetActive(false);
 

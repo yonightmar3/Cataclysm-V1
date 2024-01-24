@@ -48,9 +48,11 @@ public class eventManagerMainMap : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
-        dialogues.Add("Impossible, yet it manifests. A fractured fate's fatal figure.");
-        dialogues.Add("In the dance of frailty, shadows find willing partners, and virtue's fabric frays.");
-        dialogues.Add("Beyond reason, yet feasible. Inconceivable, yet tangible...");
+        dialogues.Add("Tomorrow's tale lies fallow, and in the dance of frailty shadows find willing partners");
+        dialogues.Add("Chasing shadows, a dance with echoes, where purpose wanes like fading stars");
+        //dialogues.Add("Impossible, yet it has manifested. A fractured fate's fatal figure.");
+        //dialogues.Add("In the dance of frailty, shadows find willing partners, and virtue's fabric frays.");
+        dialogues.Add("Beyond reason, yet feasible. Inconceivable, yet tangible... It is essential");
     }
 
     private void Update()
