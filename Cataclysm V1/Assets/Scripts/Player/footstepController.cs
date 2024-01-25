@@ -5,7 +5,7 @@ public class footstepController : MonoBehaviour
 {
     public AudioClip[] sounds; // Array to hold your AudioClips
     private AudioSource audioSource;
-    private WaitForSeconds waitTime = new WaitForSeconds(1f);
+    private WaitForSeconds waitTime = new WaitForSeconds(.5f);
     private Coroutine footstepCoroutine; // Reference to the coroutine
 
     private void Start()
