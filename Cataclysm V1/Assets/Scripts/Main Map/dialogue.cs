@@ -171,7 +171,7 @@ public class dialogue : MonoBehaviour
     }
 }
 
-*/
+*//*
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -340,5 +340,191 @@ public class dialogue : MonoBehaviour
         {
             tmpProText.text = tmpProText.text.Substring(0, tmpProText.text.Length - leadingChar.Length);
         }
+    }
+}
+*/
+
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class dialogue : MonoBehaviour
+{
+    [SerializeField] Text text;
+    [SerializeField] TMP_Text tmpProText;
+    string writer;
+    [SerializeField] private Coroutine coroutine;
+
+    [SerializeField] float delayBeforeStart = 0f;
+    [SerializeField] float timeBtwChars = 0.0001f;
+    [SerializeField] string leadingChar = "";
+    [SerializeField] bool leadingCharBeforeDelay = false;
+    [Space(10)] [SerializeField] private bool startOnEnable = false;
+
+    [Header("Collision-Based")]
+    [SerializeField] private bool clearAtStart = false;
+    [SerializeField] private bool startOnCollision = false;
+    enum options { clear, complete }
+    [SerializeField] options collisionExitOptions;
+
+    private bool isTyping = false; // Track whether the typewriter effect is active
+
+    void Awake()
+    {
+        if (text != null)
+        {
+            writer = text.text;
+        }
+
+        if (tmpProText != null)
+        {
+            writer = tmpProText.text;
+        }
+    }
+
+    void Start()
+    {
+        if (!clearAtStart) return;
+        if (text != null)
+        {
+            text.text = "";
+        }
+
+        if (tmpProText != null)
+        {
+            tmpProText.text = "";
+        }
+    }
+
+    private void OnEnable()
+    {
+        print("On Enable!");
+        if (startOnEnable) StartTypewriter();
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        print("Collision!");
+        if (startOnCollision)
+        {
+            StartTypewriter();
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (collisionExitOptions == options.complete)
+        {
+            SetNewText(writer);
+        }
+        // clear
+        else
+        {
+            if (text != null)
+            {
+                text.text = "";
+            }
+
+            if (tmpProText != null)
+            {
+                tmpProText.text = "";
+            }
+        }
+
+        StopAllCoroutines();
+    }
+
+    private void StartTypewriter()
+    {
+        StopAllCoroutines();
+
+        if (text != null)
+        {
+            text.text = "";
+            StartCoroutine(TypeWriterText());
+        }
+
+        if (tmpProText != null)
+        {
+            tmpProText.text = "";
+            StartCoroutine(TypeWriterTMP());
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    // Method to set new text and restart the typewriter effect
+    public void SetNewText(string newText)
+    {
+        if (!string.IsNullOrEmpty(newText))
+        {
+            writer = newText;
+            StartTypewriter();
+        }
+    }
+
+    // Method to check if the typewriter effect is still active
+    public bool IsTyping()
+    {
+        return isTyping;
+    }
+
+    IEnumerator TypeWriterText()
+    {
+        isTyping = true; // Typewriter effect is active
+
+        text.text = leadingCharBeforeDelay ? leadingChar : "";
+
+        yield return new WaitForSeconds(delayBeforeStart);
+
+        foreach (char c in writer)
+        {
+            if (text.text.Length > 0)
+            {
+                text.text = text.text.Substring(0, text.text.Length - leadingChar.Length);
+            }
+            text.text += c;
+            text.text += leadingChar;
+            yield return new WaitForSeconds(timeBtwChars);
+        }
+
+        if (leadingChar != "")
+        {
+            text.text = text.text.Substring(0, text.text.Length - leadingChar.Length);
+        }
+
+        isTyping = false; // Typewriter effect has finished
+        yield return null;
+    }
+
+    IEnumerator TypeWriterTMP()
+    {
+        isTyping = true; // Typewriter effect is active
+
+        tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
+
+        yield return new WaitForSeconds(delayBeforeStart);
+
+        foreach (char c in writer)
+        {
+            if (tmpProText.text.Length > 0)
+            {
+                tmpProText.text = tmpProText.text.Substring(0, tmpProText.text.Length - leadingChar.Length);
+            }
+            tmpProText.text += c;
+            tmpProText.text += leadingChar;
+            yield return new WaitForSeconds(timeBtwChars);
+        }
+
+        if (leadingChar != "")
+        {
+            tmpProText.text = tmpProText.text.Substring(0, tmpProText.text.Length - leadingChar.Length);
+        }
+
+        isTyping = false; // Typewriter effect has finished
     }
 }

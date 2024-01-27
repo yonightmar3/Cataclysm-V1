@@ -64,21 +64,21 @@ public class eventManagerMainMap : MonoBehaviour
             returnedFromDungeon = false;
         }
 
-            /*if (Gabriel != null && playerTransform != null)
-            {
-                // Create a target rotation
-                Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
-                directionToTarget.y = 0f; // Keep only X and Z components
-                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+        /*if (Gabriel != null && playerTransform != null)
+        {
+            // Create a target rotation
+            Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
+            directionToTarget.y = 0f; // Keep only X and Z components
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
-                // Smoothly rotate the player towards the target on the X and Z axes
-                playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            }*/
-        
+            // Smoothly rotate the player towards the target on the X and Z axes
+            playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }*/
+
         if (dialogueInitiated)
         {
             InputManager.disabled = true;
-            if (Input.GetKeyDown(nextDialogueKey))
+            if (dialogueInitiated && !dialogueScript.IsTyping() && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)))
             {
                 Debug.Log("next dialogue????");
                 // Display the next dialogue
@@ -213,6 +213,10 @@ public class eventManagerMainMap : MonoBehaviour
             InputManager.disabled = false;
             dialogueBox.SetActive(false);
             exitDoor.SetActive(true);
+
+            Vector3 currentEulerAngles = playerTransform.rotation.eulerAngles;
+            currentEulerAngles.x = 0f;
+            playerTransform.rotation = Quaternion.Euler(currentEulerAngles);
         }
     }
 
@@ -220,25 +224,25 @@ public class eventManagerMainMap : MonoBehaviour
     {
         if (Gabriel != null && playerTransform != null)
         {
-            /*            //FOR TRAILER<TRIPPY MOVEMENT>
-                        Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
-
-                        // Use Quaternion.LookRotation without modifying the Y component
-                        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-
-                        // Smoothly rotate the player towards the target on all axes
-                        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
-
+            //FOR TRAILER<TRIPPY MOVEMENT>
             Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
 
             // Use Quaternion.LookRotation without modifying the Y component
             Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
-            // Set the Y component of the targetRotation to the current Y rotation of the player
-            targetRotation.eulerAngles = new Vector3(0f, targetRotation.eulerAngles.y, 0f);
-
-            // Smoothly rotate the player towards the target only on the Y-axis
+            // Smoothly rotate the player towards the target on all axes
             playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            /*            Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
+
+                        // Use Quaternion.LookRotation without modifying the Y component
+                        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+                        // Set the Y component of the targetRotation to the current Y rotation of the player
+                        targetRotation.eulerAngles = new Vector3(0f, targetRotation.eulerAngles.y, 0f);
+
+                        // Smoothly rotate the player towards the target only on the Y-axis
+                        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
 
         }
     }
