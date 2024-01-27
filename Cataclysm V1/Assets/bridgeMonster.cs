@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class bridgeMonster : MonoBehaviour
 {
-    [SerializeField] private Animator seaMonster;
+    [SerializeField] private GameObject seaMonster;
+
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.tag == "Player")
         {
-            seaMonster.SetTrigger("bridge");
+            seaMonster.SetActive(true);
         }
     }
 }

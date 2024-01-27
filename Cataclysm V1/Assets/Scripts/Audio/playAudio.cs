@@ -6,7 +6,7 @@ public class playAudio : MonoBehaviour
 {
     public AudioSource audioSource;
 
-    void playSound()
+    public void playSound()
     {
         audioSource.Play();
     }

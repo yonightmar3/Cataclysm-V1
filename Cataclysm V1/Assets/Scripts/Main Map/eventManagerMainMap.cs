@@ -9,6 +9,7 @@ public class eventManagerMainMap : MonoBehaviour
 {
     public static bool returnedFromDungeon;
     public GameObject bridge;
+    public GameObject seaMonster;
 
     private GameObject player;
     //SCRIPT REFERENCES
@@ -61,6 +62,7 @@ public class eventManagerMainMap : MonoBehaviour
         {
             StartCoroutine(teleportFromDungeon());
             bridge.SetActive(true);
+            seaMonster.SetActive(false);
             returnedFromDungeon = false;
         }
 
