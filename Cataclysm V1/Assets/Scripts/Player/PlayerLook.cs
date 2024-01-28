@@ -184,13 +184,12 @@ public class PlayerLook : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             arm.SetTrigger("lightOn");
-            //armWithLight.SetActive(true);
             StartCoroutine(lightOut());
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
             arm.SetTrigger("lightOff");
-            //armWithLight.SetActive(false);
+            armWithLight.SetActive(false);
         }
 
         if (pagania)
@@ -245,7 +244,7 @@ public class PlayerLook : MonoBehaviour
 
     IEnumerator lightOut()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(1.6f);
         armWithLight.SetActive(true);
 
     }
