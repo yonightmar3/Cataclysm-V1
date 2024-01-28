@@ -120,6 +120,7 @@ public class PlayerLook : MonoBehaviour
 {
 
     [SerializeField] private Animator arm;
+    [SerializeField] private GameObject armWithLight;
 
     private Camera cam;
     [SerializeField] private Camera paganiaCam;
@@ -183,11 +184,14 @@ public class PlayerLook : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             arm.SetTrigger("lightOn");
+            //armWithLight.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
             arm.SetTrigger("lightOff");
+            //armWithLight.SetActive(false);
         }
+
         if (pagania)
         {
             cam = paganiaCam;
