@@ -185,6 +185,7 @@ public class PlayerLook : MonoBehaviour
         {
             arm.SetTrigger("lightOn");
             //armWithLight.SetActive(true);
+            StartCoroutine(lightOut());
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -240,6 +241,13 @@ public class PlayerLook : MonoBehaviour
     {
         sensitivity = sensitivitySlider.value;
         PlayerPrefs.SetFloat("musicVolume", sensitivity);
+    }
+
+    IEnumerator lightOut()
+    {
+        yield return new WaitForSeconds(.2f);
+        armWithLight.SetActive(true);
+
     }
 
 
