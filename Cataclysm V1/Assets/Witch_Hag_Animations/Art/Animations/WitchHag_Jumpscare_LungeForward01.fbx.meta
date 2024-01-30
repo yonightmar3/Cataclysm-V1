@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f4d477a08b497e948a3bf87f765b2141
+guid: 092aed53c5e09e44ea5e9001b2deeacc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -19,18 +19,19 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'thigh_l'
-      : position error = 25.320133 mm\n\t'calf_l' : position error = 7.957873 mm\n\t'foot_l'
-      : position error = 8.824943 mm\n\t'ball_l' : position error = 36.626644 mm\n\t'thigh_r'
-      : position error = 25.322935 mm\n\t'calf_r' : position error = 7.965667 mm\n\t'foot_r'
-      : position error = 8.837398 mm\n\t'ball_r' : position error = 40.873146 mm\n"
+      : position error = 25.320133 mm\n\t'calf_l' : position error = 7.972474 mm\n\t'foot_l'
+      : position error = 8.570535 mm\n\t'ball_l' : position error = 40.895130 mm\n\t'thigh_r'
+      : position error = 25.321682 mm\n\t'calf_r' : position error = 7.964328 mm\n\t'foot_r'
+      : position error = 8.576138 mm\n\t'ball_r' : position error = 40.912102 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'hand_r' has translation animation that
-      will be discarded.\n\t'neck_01' has translation animation that will be discarded.\n\t'foot_l'
-      has translation animation that will be discarded.\n\t'ball_l' has translation
-      animation that will be discarded.\n\t'foot_r' has translation animation that
-      will be discarded.\n\t'ball_r' has translation animation that will be discarded.\n"
+      to improve retargeting quality.\n\t'upperarm_r' has translation animation that
+      will be discarded.\n\t'hand_r' has translation animation that will be discarded.\n\t'neck_01'
+      has translation animation that will be discarded.\n\t'foot_l' has translation
+      animation that will be discarded.\n\t'ball_l' has translation animation that
+      will be discarded.\n\t'foot_r' has translation animation that will be discarded.\n\t'ball_r'
+      has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -44,11 +45,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: WitchHag_Move_Sprint_Forward
+      name: WitchHag_Jumpscare_LungeForward01
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -59,7 +60,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
