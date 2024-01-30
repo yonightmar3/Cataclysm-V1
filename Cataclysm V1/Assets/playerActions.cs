@@ -9,6 +9,10 @@ public class playerActions : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.K))
+        {
+            dead = true;
+        }
         if (dead)
         {
             //deathScreen.SetActive(true);

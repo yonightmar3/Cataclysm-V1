@@ -143,6 +143,7 @@ public class monsterAgent : MonoBehaviour
         if (other.tag == "Player")
         {
             playerActions.dead = false;
+            //respawnMainMap.respawned = false;
         }
     }
 

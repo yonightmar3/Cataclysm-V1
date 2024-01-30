@@ -5,9 +5,9 @@ using UnityEngine;
 public class respawnMainMap : MonoBehaviour
 {
     private GameObject player;
-    private bool respawned = false;
+    public static bool respawned = false;
 
-    private bool marlton;
+    public static bool marlton;
     private Transform latestSpawn;
 
     [SerializeField] private Transform[] spawnPoints;
@@ -20,10 +20,15 @@ public class respawnMainMap : MonoBehaviour
 
     private void Update()
     {
-        if (playerActions.dead)
+        if (playerActions.dead/* && respawned == false*/)
         {
             player.transform.position = latestSpawn.position;
             //respawned = true;
+        }
+
+        if (marlton)
+        {
+            latestSpawn = spawnPoints[1];
         }
     }
 
