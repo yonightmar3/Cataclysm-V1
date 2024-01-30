@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4696043437409097714}
   - component: {fileID: 3316572621688283031}
+  - component: {fileID: 2718962171255932834}
   m_Layer: 0
   m_Name: TreesWithLods
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 814548963944286897}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &3316572621688283031
 LODGroup:
@@ -58,6 +59,29 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!136 &2718962171255932834
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822085016596550788}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 15
+  m_Direction: 1
+  m_Center: {x: 0.15, y: 2.6, z: -0.26}
 --- !u!1 &6516795143098842302
 GameObject:
   m_ObjectHideFlags: 0
