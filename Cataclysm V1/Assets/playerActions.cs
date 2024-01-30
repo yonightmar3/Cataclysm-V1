@@ -11,7 +11,13 @@ public class playerActions : MonoBehaviour
     {
         if (dead)
         {
-            deathScreen.SetActive(true);
+            //deathScreen.SetActive(true);
         }
+    }
+
+    public void respawn()
+    {
+        //deathScreen.SetActive(false);
+        Debug.Log("respawned");
     }
 }

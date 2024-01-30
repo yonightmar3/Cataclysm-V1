@@ -5,12 +5,12 @@ using UnityEngine;
 public class respawnMainMap : MonoBehaviour
 {
     private GameObject player;
+    private bool respawned = false;
 
     private bool marlton;
     private Transform latestSpawn;
 
     [SerializeField] private Transform[] spawnPoints;
-    // Start is called before the first frame update
     
     private void Start()
     {
@@ -23,6 +23,8 @@ public class respawnMainMap : MonoBehaviour
         if (playerActions.dead)
         {
             player.transform.position = latestSpawn.position;
+            //respawned = true;
         }
     }
+
 }

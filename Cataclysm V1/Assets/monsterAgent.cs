@@ -138,6 +138,14 @@ public class monsterAgent : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerActions.dead = false;
+        }
+    }
+
 }
 
 
