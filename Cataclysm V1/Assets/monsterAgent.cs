@@ -130,6 +130,14 @@ public class monsterAgent : MonoBehaviour
         agent.SetDestination(player.transform.position);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerActions.dead = true;
+        }
+    }
+
 }
 
 

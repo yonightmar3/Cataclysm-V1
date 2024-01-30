@@ -120,7 +120,8 @@ public class PlayerLook : MonoBehaviour
 {
 
     [SerializeField] private Animator arm;
-    [SerializeField] private GameObject armWithLight;
+    [SerializeField] private GameObject lightOrb;
+    private bool lightOn = false;
 
     private Camera cam;
     [SerializeField] private Camera paganiaCam;
@@ -181,15 +182,21 @@ public class PlayerLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //F KEY TOGGLES THE LIGHT
         if (Input.GetKeyDown(KeyCode.F))
         {
-            arm.SetTrigger("lightOn");
-            StartCoroutine(lightOut());
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            arm.SetTrigger("lightOff");
-            armWithLight.SetActive(false);
+            if (lightOn)
+            {
+                arm.SetTrigger("lightOff");
+                lightOrb.SetActive(false);
+            }
+            else
+            {
+                arm.SetTrigger("lightOn");
+                StartCoroutine(lightOut());
+            }
+
+            lightOn = !lightOn;
         }
 
         if (pagania)
@@ -245,8 +252,7 @@ public class PlayerLook : MonoBehaviour
     IEnumerator lightOut()
     {
         yield return new WaitForSeconds(1.6f);
-        armWithLight.SetActive(true);
-
+        lightOrb.SetActive(true);
     }
 
 

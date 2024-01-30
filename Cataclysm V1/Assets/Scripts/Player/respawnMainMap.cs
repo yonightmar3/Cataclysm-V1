@@ -5,7 +5,6 @@ using UnityEngine;
 public class respawnMainMap : MonoBehaviour
 {
     private GameObject player;
-    public bool playerDead;
 
     private bool marlton;
     private Transform latestSpawn;
@@ -21,7 +20,7 @@ public class respawnMainMap : MonoBehaviour
 
     private void Update()
     {
-        if (playerDead)
+        if (playerActions.dead)
         {
             player.transform.position = latestSpawn.position;
         }
