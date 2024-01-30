@@ -23,13 +23,23 @@ public class respawnMainMap : MonoBehaviour
         if (playerActions.dead/* && respawned == false*/)
         {
             player.transform.position = latestSpawn.position;
-            //respawned = true;
+            StartCoroutine(respawn());
+            playerActions.dead = false;
         }
 
         if (marlton)
         {
             latestSpawn = spawnPoints[1];
         }
+    }
+
+    IEnumerator respawn()
+    {
+        InputManager.disabled = true;
+        yield return new WaitForSeconds(0.1f);
+        player.transform.position = latestSpawn.position;
+        yield return new WaitForSeconds(.1f);
+        InputManager.disabled = false;
     }
 
 }
