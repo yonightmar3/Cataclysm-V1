@@ -473,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 306.2
+      value: 134.4
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -481,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 723.8
+      value: 601
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -520,10 +520,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3370107572808136962, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471772012956607562, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
@@ -683,23 +679,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7802665507769497064, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7802665507769497064, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8013691163875831215, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8074258964442480023, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281588735340123328, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
@@ -2392,11 +2376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 890739edfeab4ff3bb51174dec7e3731, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.8
+      value: -67.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 890739edfeab4ff3bb51174dec7e3731, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -47.2
+      value: -51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 890739edfeab4ff3bb51174dec7e3731, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2449,7 +2433,7 @@ PrefabInstance:
     - target: {fileID: 5863567851875064735, guid: 890739edfeab4ff3bb51174dec7e3731, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5716399f8ab58c54ca793d47abca2962, type: 2}
+      objectReference: {fileID: 2100000, guid: 9b828360267911045bf66359c8f2da9d, type: 2}
     - target: {fileID: 5866666021909216657, guid: 890739edfeab4ff3bb51174dec7e3731, type: 3}
       propertyPath: m_Controller
       value: 
@@ -3603,11 +3587,11 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: effc70e3803851f4088f47ea05960ef3, type: 2}
-  m_TreeDistance: 50
+  m_TreeDistance: 1
   m_TreeBillboardDistance: 237
   m_TreeCrossFadeLength: 2
   m_TreeMaximumFullLODCount: 1089
-  m_DetailObjectDistance: 55
+  m_DetailObjectDistance: 25
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -3928,7 +3912,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
