@@ -24,7 +24,21 @@ public class starvedAgent : MonoBehaviour
         {
             starved.isStopped = false;
             starved.destination = player.position;
-            starvedAnimator.SetTrigger("running");
+            //starvedAnimator.SetTrigger("running");
+            if (distanceToPlayer <= 5f)
+            {
+                starvedAnimator.SetTrigger("attackRange");
+                starved.isStopped = true;
+                starved.destination = transform.position;
+
+                /*            if (distanceToPlayer <= 1.5f)
+                            {
+                                starved.isStopped = true;
+                                starved.destination = transform.position;
+                                Debug.Log("stopped");
+                                //starvedAnimator.SetTrigger("attackRange");
+                            }*/
+            }
         }
 /*        if (distanceToPlayer <= 15f && distanceToPlayer > 2f)
         {
@@ -32,19 +46,7 @@ public class starvedAgent : MonoBehaviour
             starved.destination = player.position;
             starvedAnimator.SetTrigger("running");
         }*/
-        if (distanceToPlayer <= 2f)
-        {
-            starvedAnimator.SetTrigger("attackRange");
-            starved.isStopped = true;
 
-/*            if (distanceToPlayer <= 1.5f)
-            {
-                starved.isStopped = true;
-                starved.destination = transform.position;
-                Debug.Log("stopped");
-                //starvedAnimator.SetTrigger("attackRange");
-            }*/
-        }
         
     }
 }
