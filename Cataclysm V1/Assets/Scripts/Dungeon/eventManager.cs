@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 
 
@@ -85,6 +86,7 @@ public class eventManager : MonoBehaviour
 
     private void Update()
     {
+        NavMeshAgent[] starved = FindObjectsOfType<NavMeshAgent>();
         if (playerLookScript != null)
         {
             // Access the HitInfo property from the PlayerLook script
