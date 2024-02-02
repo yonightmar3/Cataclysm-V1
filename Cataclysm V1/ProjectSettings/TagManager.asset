@@ -9,6 +9,7 @@ TagManager:
   - DoorPortal
   - DoorLocked
   - Teleporter
+  - StarvedAgent
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Pagania
   - Player
   - Terrain
-  - 
+  - StarvedAgent
   - 
   - 
   - 

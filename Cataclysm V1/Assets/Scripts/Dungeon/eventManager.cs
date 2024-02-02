@@ -48,6 +48,8 @@ public class eventManager : MonoBehaviour
     //BOOKS
     public GameObject entropyBook;
 
+    private string starvedAgentTag = "StarvedAgent";
+
 
 
 
@@ -86,7 +88,33 @@ public class eventManager : MonoBehaviour
 
     private void Update()
     {
-        NavMeshAgent[] starved = FindObjectsOfType<NavMeshAgent>();
+/*        GameObject[] starvedGameObjects = GameObject.FindGameObjectsWithTag(starvedAgentTag);
+        NavMeshAgent closestStarved = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject starvedGameObject in starvedGameObjects)
+        {
+            // Get the NavMeshAgent component attached to the enemy game object
+            NavMeshAgent enemy = starvedGameObject.GetComponent<NavMeshAgent>();
+
+            // Ensure the enemy has a NavMeshAgent component
+            if (enemy != null)
+            {
+                // Calculate the distance between the enemy and the player
+                float distanceToPlayer = Vector3.Distance(enemy.transform.position, player.transform.position);
+
+                // Check if this enemy is closer to the player than the current closest enemy
+                if (distanceToPlayer < closestDistance)
+                {
+                    closestStarved = enemy;
+                    closestDistance = distanceToPlayer;
+                }
+            }
+        }
+
+        closestStarved.gameObject.SetActive(false);*/
+
+
         if (playerLookScript != null)
         {
             // Access the HitInfo property from the PlayerLook script
