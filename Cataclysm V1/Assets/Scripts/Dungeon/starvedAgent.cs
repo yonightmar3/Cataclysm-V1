@@ -11,6 +11,11 @@ public class starvedAgent : MonoBehaviour
     private bool playerSeen;
     public Animator starvedAnimator;
 
+    public static bool jumpscared;
+    [SerializeField] private GameObject deathScreen;
+    //doing this bc of weird bug where footsteps resume after jumpscare
+    [SerializeField] private GameObject footsteps;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +35,32 @@ public class starvedAgent : MonoBehaviour
         }
         if (distanceToPlayer <= 2.5f && eventManager.keyObtained == true)
             {
-                starvedAnimator.SetTrigger("attackRange");
+            jumpscared = true;
+                //starvedAnimator.SetTrigger("attackRange");
                 starved.isStopped = true;
+
+            //player looks at starved
+/*            if (transform != null)
+            {
+                InputManager.disabled = true;
+                // Get the direction to the enemy
+                Vector3 directionToEnemy = player.transform.position - transform.position;
+                directionToEnemy.y = 0f; // Ignore height difference
+
+                if (directionToEnemy != Vector3.zero)
+                {
+                    // Calculate the rotation needed to look at the enemy
+                    Quaternion targetRotation = Quaternion.LookRotation(-directionToEnemy);
+
+                    // Slerp to smoothly rotate towards the enemy on the y-axis
+                    player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 10f * Time.deltaTime);
+
+                    footsteps.SetActive(false);
+
+                    StartCoroutine(jumpscare());                }
+            }*/
+
+            //starved looks at player
             if (player != null)
             {
                 // Calculate the direction vector from the enemy to the player
@@ -44,7 +73,7 @@ public class starvedAgent : MonoBehaviour
                     Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
 
                     // Smoothly rotate towards the player
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
                 }
 
                 
@@ -62,6 +91,14 @@ public class starvedAgent : MonoBehaviour
                         }*/
         }
         }
+
+/*    IEnumerator jumpscare()
+    {
+        yield return new WaitForSeconds(1.4f);
+        //deathScreen.SetActive(true);
+        playerActions.dead = true;
+        
+    }*/
 /*        if (distanceToPlayer <= 15f && distanceToPlayer > 2f)
         {
             starved.isStopped = false;
