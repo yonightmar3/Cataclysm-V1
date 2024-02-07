@@ -14,6 +14,9 @@ public class closestEnemy : MonoBehaviour
     private GameObject[] enemies;
     private Transform playerTransform;
 
+    [SerializeField] private GameObject lightOrb;
+    [SerializeField] private GameObject spotlight;
+
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag(playerTag).transform;
@@ -23,14 +26,20 @@ public class closestEnemy : MonoBehaviour
 
     void Update()
     {
-        if (dying == false)
+        
+        GameObject closestEnemy = FindClosestEnemy();
+        float distanceToPlayer = Vector3.Distance(closestEnemy.transform.position, playerTransform.position);
+
+        if (respawnDungeon.respawned)
         {
+            for (int i = 0; i < enemies.Length; i++)
+            {               
+                    enemies[i].SetActive(true);
+                    enemies[i].GetComponent<Animator>().SetTrigger("reset");
+            }
+        }
 
-
-            GameObject closestEnemy = FindClosestEnemy();
-            float distanceToPlayer = Vector3.Distance(closestEnemy.transform.position, playerTransform.position);
-
-            NavMeshAgent closestEnemyAgent = closestEnemy.GetComponent<NavMeshAgent>();
+        NavMeshAgent closestEnemyAgent = closestEnemy.GetComponent<NavMeshAgent>();
             // Do something with closestEnemy
             closestEnemyAnimator = closestEnemy.GetComponent<Animator>();
             if (distanceToPlayer <= 2.5f && eventManager.keyObtained == true)
@@ -44,6 +53,8 @@ public class closestEnemy : MonoBehaviour
                     StartCoroutine(starvedJumpscare());
                 }
                 closestEnemyAnimator.SetTrigger("attackRange");
+                lightOrb.SetActive(false);
+                spotlight.SetActive(true);
                 closestEnemyAgent.isStopped = true;
             }
             if (transform != null && starvedAgent.jumpscared == true)
@@ -66,7 +77,7 @@ public class closestEnemy : MonoBehaviour
                     //StartCoroutine(jumpscare());
                 }
             }
-        }
+        
 
 
     }
@@ -96,6 +107,7 @@ public class closestEnemy : MonoBehaviour
         yield return new WaitForSeconds(1.4f);
         //deathScreen.SetActive(true);
         playerActions.dead = true;
+        spotlight.SetActive(false);
 
     }
 }

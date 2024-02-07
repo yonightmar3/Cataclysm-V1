@@ -11,6 +11,8 @@ public class starvedAgent : MonoBehaviour
     private bool playerSeen;
     public Animator starvedAnimator;
 
+    private Transform originalLocation = null;
+
     public static bool jumpscared;
     [SerializeField] private GameObject deathScreen;
     //doing this bc of weird bug where footsteps resume after jumpscare
@@ -21,11 +23,23 @@ public class starvedAgent : MonoBehaviour
     void Start()
     {
         starved = GetComponent<NavMeshAgent>();
+        originalLocation = new GameObject().transform;
+        originalLocation.position = transform.position;
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        if (respawnDungeon.respawned)
+        {
+            transform.position = originalLocation.position;
+            respawnDungeon.respawned = false;
+            //starved.SetDestination(originalLocation.position);
+            Debug.Log("going home!");
+            //starved.isStopped = false;
+            starvedAnimator.SetTrigger("reset");
+        }
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer > 3.5f && eventManager.keyObtained == true)
         {

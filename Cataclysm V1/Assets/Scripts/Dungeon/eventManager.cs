@@ -11,6 +11,7 @@ public class eventManager : MonoBehaviour
     //SCRIPT REFERENCES
 
     public static bool keyObtained = false;
+    [SerializeField] private GameObject starvedKey;
 
     public PlayerLook playerLookScript;
 
@@ -117,6 +118,10 @@ public class eventManager : MonoBehaviour
 
         if (playerLookScript != null)
         {
+            if (respawnDungeon.respawned)
+            {
+                starvedKey.SetActive(true);
+            }
             // Access the HitInfo property from the PlayerLook script
             RaycastHit hitInfoFar = playerLookScript.HitInfoFar;
             RaycastHit hitInfoClose = playerLookScript.HitInfoClose;

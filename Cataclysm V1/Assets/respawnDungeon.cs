@@ -13,6 +13,9 @@ public class respawnDungeon : MonoBehaviour
 
     [SerializeField] private Transform[] spawnPoints;
 
+    [SerializeField] private GameObject lightOrb;
+    [SerializeField] private GameObject spotlight;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -25,8 +28,15 @@ public class respawnDungeon : MonoBehaviour
         {
             player.transform.position = latestSpawn.position;
             StartCoroutine(respawn());
-            closestEnemy.dying = false;
+            //closestEnemy.dying = false;
             playerActions.dead = false;
+            starvedAgent.jumpscared = false;
+            eventManager.keyObtained = false;
+            respawned = true;
+            if (latestSpawn == spawnPoints[0])
+            {
+            }
+            
         }
 
         if (starved)
