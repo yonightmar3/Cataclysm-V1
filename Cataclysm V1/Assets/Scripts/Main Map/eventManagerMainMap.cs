@@ -234,22 +234,8 @@ public class eventManagerMainMap : MonoBehaviour
 
             // Smoothly rotate the player towards the target on all axes
             playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-            /*            Vector3 directionToTarget = GabrielHead.gameObject.transform.position - playerTransform.position;
-
-                        // Use Quaternion.LookRotation without modifying the Y component
-                        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-
-                        // Set the Y component of the targetRotation to the current Y rotation of the player
-                        targetRotation.eulerAngles = new Vector3(0f, targetRotation.eulerAngles.y, 0f);
-
-                        // Smoothly rotate the player towards the target only on the Y-axis
-                        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
-
         }
     }
-
-    
 
     IEnumerator GabrielSequence()
     {

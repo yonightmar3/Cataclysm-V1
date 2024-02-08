@@ -33,16 +33,20 @@ public class closestEnemy : MonoBehaviour
         if (respawnDungeon.respawned)
         {
             for (int i = 0; i < enemies.Length; i++)
-            {               
-                    enemies[i].SetActive(true);
-                    enemies[i].GetComponent<Animator>().SetTrigger("reset");
+            {
+                enemies[i].SetActive(true);
+                enemies[i].GetComponent<Animator>().SetTrigger("reset");
             }
+            //respawnDungeon.respawned = false;
         }
 
         NavMeshAgent closestEnemyAgent = closestEnemy.GetComponent<NavMeshAgent>();
             // Do something with closestEnemy
             closestEnemyAnimator = closestEnemy.GetComponent<Animator>();
-            if (distanceToPlayer <= 2.5f && eventManager.keyObtained == true)
+            
+        
+        if (distanceToPlayer <= 2.5f && eventManager.keyObtained == true)
+
             {
                 for (int i = 0; i < enemies.Length; i++)
                 {
@@ -50,14 +54,19 @@ public class closestEnemy : MonoBehaviour
                     {
                         enemies[i].SetActive(false);
                     }
-                    StartCoroutine(starvedJumpscare());
+                    //StartCoroutine(starvedJumpscare());
                 }
-                closestEnemyAnimator.SetTrigger("attackRange");
-                lightOrb.SetActive(false);
+            StartCoroutine(starvedJumpscare());
+
+            //closestEnemyAnimator.SetTrigger("attackRange");
+            lightOrb.SetActive(false);
                 spotlight.SetActive(true);
                 closestEnemyAgent.isStopped = true;
             }
-            if (transform != null && starvedAgent.jumpscared == true)
+
+
+        if (transform != null && starvedAgent.jumpscared == true)
+
             {
                 InputManager.disabled = true;
                 // Get the direction to the enemy
@@ -104,10 +113,10 @@ public class closestEnemy : MonoBehaviour
 
     IEnumerator starvedJumpscare()
     {
+        closestEnemyAnimator.SetTrigger("attackRange");
         yield return new WaitForSeconds(1.4f);
         //deathScreen.SetActive(true);
         playerActions.dead = true;
         spotlight.SetActive(false);
-
     }
 }

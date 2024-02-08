@@ -12,6 +12,8 @@ public class starvedAgent : MonoBehaviour
     public Animator starvedAnimator;
 
     private Transform originalLocation = null;
+    private Quaternion originalRotation;
+
 
     public static bool jumpscared;
     [SerializeField] private GameObject deathScreen;
@@ -25,6 +27,7 @@ public class starvedAgent : MonoBehaviour
         starved = GetComponent<NavMeshAgent>();
         originalLocation = new GameObject().transform;
         originalLocation.position = transform.position;
+        originalRotation = transform.rotation;
     }
 
 
@@ -34,11 +37,12 @@ public class starvedAgent : MonoBehaviour
         if (respawnDungeon.respawned)
         {
             transform.position = originalLocation.position;
-            respawnDungeon.respawned = false;
+            transform.rotation = originalLocation.rotation;
+
             //starved.SetDestination(originalLocation.position);
-            Debug.Log("going home!");
             //starved.isStopped = false;
-            starvedAnimator.SetTrigger("reset");
+            //starvedAnimator.SetTrigger("reset");
+            //respawnDungeon.respawned = false;
         }
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer > 3.5f && eventManager.keyObtained == true)

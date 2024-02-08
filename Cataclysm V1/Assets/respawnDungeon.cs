@@ -27,12 +27,12 @@ public class respawnDungeon : MonoBehaviour
         if (playerActions.dead/* && respawned == false*/ && SceneManager.GetActiveScene().name == "Dungeon")
         {
             player.transform.position = latestSpawn.position;
-            StartCoroutine(respawn());
             //closestEnemy.dying = false;
             playerActions.dead = false;
             starvedAgent.jumpscared = false;
             eventManager.keyObtained = false;
             respawned = true;
+            StartCoroutine(respawn());
             if (latestSpawn == spawnPoints[0])
             {
             }
@@ -52,6 +52,7 @@ public class respawnDungeon : MonoBehaviour
         player.transform.position = latestSpawn.position;
         yield return new WaitForSeconds(.1f);
         InputManager.disabled = false;
+        respawned = false;
     }
 
 }
