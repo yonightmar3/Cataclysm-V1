@@ -10,4 +10,9 @@ public class leaveDungeon : MonoBehaviour
         eventManagerMainMap.returnedFromDungeon = true;
         SceneManager.LoadScene("MainMap");
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        eventManagerMainMap.returnedFromDungeon = false;
+    }
 }

@@ -61,10 +61,9 @@ public class eventManagerMainMap : MonoBehaviour
         if (returnedFromDungeon)
         {
             StartCoroutine(teleportFromDungeon());
-            bridge.SetActive(true);
-            seaMonster.SetActive(false);
-            returnedFromDungeon = false;
-        }
+            returnedFromDungeon = false; // Reset the flag after teleporting
+
+        } 
 
         /*if (Gabriel != null && playerTransform != null)
         {
@@ -249,12 +248,12 @@ public class eventManagerMainMap : MonoBehaviour
 
     IEnumerator teleportFromDungeon()
     {
-        //InputManager.disabled = true;
         yield return new WaitForSeconds(0.1f);
         player.transform.position = new Vector3(871, 33, 903);
-        Debug.Log("player teleported");
+        bridge.SetActive(true);
+        seaMonster.SetActive(false);
         yield return new WaitForSeconds(0.1f);
-        InputManager.disabled = false;
+        InputManager.disabled = false; // Ensure that player input is enabled after teleporting
     }
 
 

@@ -149,8 +149,12 @@ public class alchemyPuzzle : MonoBehaviour
                 Debug.Log("successfully made potion");
                 shadowRing.SetActive(true);
             }
-            else Debug.Log("messed up");
-            StartCoroutine("jumpscareText");
+            else
+            {
+                Debug.Log("messed up");
+                StartCoroutine("jumpscareText");
+            }
+
         }
 
 
