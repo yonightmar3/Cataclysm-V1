@@ -10,6 +10,7 @@ public class alchemyPuzzle : MonoBehaviour
     public GameObject jumpscare;
 
     private bool carrying;
+    private bool canDeposit = true;
 
     private bool saltCrystal;
     private bool bluejayFeather;
@@ -54,6 +55,7 @@ public class alchemyPuzzle : MonoBehaviour
                         }                     
                     }
                 }
+
                 else if (lookingAtClose.name == "Bluejay Feather")
                 {
                     pickUpText.SetActive(true);
@@ -104,13 +106,14 @@ public class alchemyPuzzle : MonoBehaviour
                     }
                 }
 
-                else if (lookingAtClose.name == "Cauldron")
+                else if (lookingAtClose.name == "Cauldron" && canDeposit == true)
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         if(carrying == true)
                         {
+                            StartCoroutine(ingredientFire());
                             ingredientsDeposited++;
                             Debug.Log("Ingredients deposited: " + ingredientsDeposited);
                             if (saltCrystal || bluejayFeather || blackEgg)
@@ -120,7 +123,6 @@ public class alchemyPuzzle : MonoBehaviour
                             }
                             if(lizardTail){
                                 Debug.Log("wrong ingredient");
-                                StartCoroutine(wrongIngredientFire());
                                 carrying = false;
                                 wrongIngredient = true;
                             }                           
@@ -134,6 +136,7 @@ public class alchemyPuzzle : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         leaveDungeonPortal.SetActive(true);
+                        shadowRing.SetActive(false);
                     }
                 }
 
@@ -144,6 +147,8 @@ public class alchemyPuzzle : MonoBehaviour
         }
         if (ingredientsDeposited == 3)
         {
+            canDeposit = false;
+
             if (!wrongIngredient)
             {
                 Debug.Log("successfully made potion");
@@ -169,7 +174,7 @@ public class alchemyPuzzle : MonoBehaviour
         InputManager.disabled = false;
     }
 
-    IEnumerator wrongIngredientFire()
+    IEnumerator ingredientFire()
     {
         fireRed.SetActive(true);
         yield return new WaitForSeconds(.5f);

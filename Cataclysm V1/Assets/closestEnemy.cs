@@ -35,9 +35,8 @@ public class closestEnemy : MonoBehaviour
             for (int i = 0; i < enemies.Length; i++)
             {
                 enemies[i].SetActive(true);
-                enemies[i].GetComponent<Animator>().SetTrigger("reset");
+                //enemies[i].GetComponent<Animator>().SetTrigger("reset");
             }
-            //respawnDungeon.respawned = false;
         }
 
         NavMeshAgent closestEnemyAgent = closestEnemy.GetComponent<NavMeshAgent>();
@@ -45,6 +44,7 @@ public class closestEnemy : MonoBehaviour
             closestEnemyAnimator = closestEnemy.GetComponent<Animator>();
             
         
+        //adjust this <= when you finalize starved speed
         if (distanceToPlayer <= 2.5f && eventManager.keyObtained == true)
 
             {
@@ -118,5 +118,6 @@ public class closestEnemy : MonoBehaviour
         //deathScreen.SetActive(true);
         playerActions.dead = true;
         spotlight.SetActive(false);
+        closestEnemyAnimator.SetTrigger("reset");
     }
 }

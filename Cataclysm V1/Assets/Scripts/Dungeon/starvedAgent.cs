@@ -37,7 +37,7 @@ public class starvedAgent : MonoBehaviour
         if (respawnDungeon.respawned)
         {
             transform.position = originalLocation.position;
-            transform.rotation = originalLocation.rotation;
+            transform.rotation = originalRotation;
 
             //starved.SetDestination(originalLocation.position);
             //starved.isStopped = false;

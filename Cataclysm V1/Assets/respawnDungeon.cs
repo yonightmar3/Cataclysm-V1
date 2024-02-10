@@ -31,7 +31,7 @@ public class respawnDungeon : MonoBehaviour
             playerActions.dead = false;
             starvedAgent.jumpscared = false;
             eventManager.keyObtained = false;
-            respawned = true;
+            //respawned = true;
             StartCoroutine(respawn());
             if (latestSpawn == spawnPoints[0])
             {
@@ -47,6 +47,7 @@ public class respawnDungeon : MonoBehaviour
 
     IEnumerator respawn()
     {
+        respawned = true;
         InputManager.disabled = true;
         yield return new WaitForSeconds(0.1f);
         player.transform.position = latestSpawn.position;
