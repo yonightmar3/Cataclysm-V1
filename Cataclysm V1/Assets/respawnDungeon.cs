@@ -28,6 +28,7 @@ public class respawnDungeon : MonoBehaviour
         {
             player.transform.position = latestSpawn.position;
             //closestEnemy.dying = false;
+            PlayerLook.lightOn = false;
             playerActions.dead = false;
             starvedAgent.jumpscared = false;
             eventManager.keyObtained = false;

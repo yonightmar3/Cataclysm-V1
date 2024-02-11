@@ -121,7 +121,9 @@ public class PlayerLook : MonoBehaviour
 
     [SerializeField] private Animator arm;
     [SerializeField] private GameObject lightOrb;
-    private bool lightOn = false;
+    //private bool lightOn = false;
+    public static bool lightOn = false;
+
 
     private Camera cam;
     [SerializeField] private Camera paganiaCam;

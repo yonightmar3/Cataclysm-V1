@@ -45,7 +45,7 @@ public class closestEnemy : MonoBehaviour
             
         
         //adjust this <= when you finalize starved speed
-        if (distanceToPlayer <= 2.5f && eventManager.keyObtained == true)
+        if (distanceToPlayer <= 2.5f && /*eventManager.keyObtained == true*/ PlayerLook.lightOn)
 
             {
                 for (int i = 0; i < enemies.Length; i++)

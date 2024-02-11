@@ -12,6 +12,7 @@ public class eventManager : MonoBehaviour
 
     public static bool keyObtained = false;
     [SerializeField] private GameObject starvedKey;
+    private GameObject[] starvedLights;
 
     public PlayerLook playerLookScript;
 
@@ -65,6 +66,8 @@ public class eventManager : MonoBehaviour
     {
         //jail room
         jailWall = GameObject.Find("jailWall");
+
+        starvedLights = GameObject.FindGameObjectsWithTag("StarvedLight");
 
 
     }
@@ -125,6 +128,24 @@ public class eventManager : MonoBehaviour
             // Access the HitInfo property from the PlayerLook script
             RaycastHit hitInfoFar = playerLookScript.HitInfoFar;
             RaycastHit hitInfoClose = playerLookScript.HitInfoClose;
+            if (keyObtained)
+            {
+                Debug.Log("lights out");
+
+                foreach (GameObject light in starvedLights)
+                {
+                    //light.SetActive(false);
+                    light.GetComponent<Light>().enabled = false;
+                }
+            }
+            else
+            {
+                foreach (GameObject light in starvedLights)
+                {
+                    light.GetComponent<Light>().enabled = true;
+
+                }
+            }
 
 
             // Now you can use hitInfo in this script
@@ -153,7 +174,7 @@ public class eventManager : MonoBehaviour
 
                     }
                 }
-                else if (lookingAtClose.name == "Key")
+                else if (lookingAtClose.name == "Starved Key")
                 {
                     pickUpText.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.E))
