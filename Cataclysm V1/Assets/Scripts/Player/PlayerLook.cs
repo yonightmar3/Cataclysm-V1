@@ -123,6 +123,8 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private GameObject lightOrb;
     //private bool lightOn = false;
     public static bool lightOn = false;
+    public static bool orbDeployed = false;
+
 
 
     private Camera cam;
@@ -195,7 +197,7 @@ public class PlayerLook : MonoBehaviour
             else
             {
                 arm.SetTrigger("lightOn");
-                StartCoroutine(lightOut());
+                //StartCoroutine(lightOut());
             }
 
             lightOn = !lightOn;
