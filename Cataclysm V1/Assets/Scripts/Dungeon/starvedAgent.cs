@@ -45,13 +45,13 @@ public class starvedAgent : MonoBehaviour
             //respawnDungeon.respawned = false;
         }
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer > 3.5f && distanceToPlayer < 15f/*eventManager.keyObtained == true*/&& PlayerLook.lightOn) 
+        if (distanceToPlayer > 3.5f && distanceToPlayer < 15f/*eventManager.keyObtained == true*/&& PlayerLook.orbDeployed) 
         {
             starved.isStopped = false;
             starved.destination = player.position;
             starvedAnimator.SetTrigger("running");
         }
-        if (distanceToPlayer <= 2.5f && PlayerLook.lightOn)
+        if (distanceToPlayer <= 2.5f && PlayerLook.orbDeployed)
             {
             jumpscared = true;
                 //starvedAnimator.SetTrigger("attackRange");
