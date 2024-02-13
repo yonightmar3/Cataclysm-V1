@@ -9,6 +9,7 @@ public class closestEnemy : MonoBehaviour
     private string playerTag = "Player"; // Tag of your player GameObject
     private Animator closestEnemyAnimator;
 
+    [SerializeField] private AudioSource jumpscareSound;
     public static bool dying;
 
     private GameObject[] enemies;
@@ -114,10 +115,12 @@ public class closestEnemy : MonoBehaviour
     IEnumerator starvedJumpscare()
     {
         closestEnemyAnimator.SetTrigger("attackRange");
+        jumpscareSound.enabled = true;
         yield return new WaitForSeconds(1.4f);
         //deathScreen.SetActive(true);
         playerActions.dead = true;
         spotlight.SetActive(false);
         closestEnemyAnimator.SetTrigger("reset");
+        jumpscareSound.enabled = false;
     }
 }

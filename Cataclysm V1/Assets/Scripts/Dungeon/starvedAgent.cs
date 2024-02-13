@@ -10,10 +10,13 @@ public class starvedAgent : MonoBehaviour
     public Transform player;
     private bool playerSeen;
     public Animator starvedAnimator;
-
+    //public static bool isRunning = false;
     private Transform originalLocation = null;
     private Quaternion originalRotation;
 
+    public AnimationClip[] idleAnimations;
+
+    private int animationCount = 2;
 
     public static bool jumpscared;
     [SerializeField] private GameObject deathScreen;
@@ -28,9 +31,26 @@ public class starvedAgent : MonoBehaviour
         originalLocation = new GameObject().transform;
         originalLocation.position = transform.position;
         originalRotation = transform.rotation;
+
+        SetRandomIdleAnimation();
+
     }
 
+    void SetRandomIdleAnimation()
+    {
+        if (idleAnimations.Length > 0)
+        {
+            // Choose a random animation clip from the array
+            int randomIndex = Random.Range(0, idleAnimations.Length);
 
+            // Set the selected animation clip to the state
+            starvedAnimator.runtimeAnimatorController.animationClips[0] = idleAnimations[randomIndex];
+        }
+        else
+        {
+            Debug.LogWarning("No idle animations assigned!");
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -50,6 +70,7 @@ public class starvedAgent : MonoBehaviour
             starved.isStopped = false;
             starved.destination = player.position;
             starvedAnimator.SetTrigger("running");
+            //isRunning = true;
         }
         if (distanceToPlayer <= 2.5f && PlayerLook.orbDeployed)
             {

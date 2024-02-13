@@ -135,7 +135,7 @@ public class eventManager : MonoBehaviour
                 foreach (GameObject light in starvedLights)
                 {
                     //light.SetActive(false);
-                    light.GetComponent<Light>().enabled = false;
+                    light.SetActive(false);
                 }
             }
             else
