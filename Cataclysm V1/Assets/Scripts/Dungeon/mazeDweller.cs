@@ -12,6 +12,8 @@ public class mazeDweller : MonoBehaviour
 
     public Transform spawnPoint;
 
+    [SerializeField] private AudioSource chaseMusic;
+
     public Transform bridge;
     /*public Transform spawn;
     private Transform spawnTest;*/
@@ -42,12 +44,14 @@ public class mazeDweller : MonoBehaviour
                     {
                         monster.destination = player.position;
                         isMoving = true;
+                        chaseMusic.enabled = true;
                     }
                 }
                 else
                 {
                     monster.destination = previousPosition;
                     isMoving = false;
+                    //chaseMusic.enabled = false;
                 }
             } 
             else if (mazeActionsScript.hidden == true)
@@ -65,6 +69,7 @@ public class mazeDweller : MonoBehaviour
                     //player didn't hide quikly enuff and monster jumpscares
                     //Debug.Log("hid poorly");
                     monster.destination = player.position;
+                    
                 }
             } 
             
