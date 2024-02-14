@@ -606,15 +606,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 303.17017
+      value: 145.1
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.66
+      value: 47.1
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 735.2394
+      value: 580.7
       objectReference: {fileID: 0}
     - target: {fileID: 2998685444808177829, guid: 78640bfb230658542ac9f0af658ad4d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1551,6 +1551,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1793179144}
   - {fileID: 1715347870}
   - {fileID: 237650629}
   - {fileID: 903161060}
@@ -1588,7 +1589,6 @@ Transform:
   - {fileID: 1545332216}
   - {fileID: 498283489}
   - {fileID: 1212529844}
-  - {fileID: 1793179144}
   - {fileID: 734872718}
   - {fileID: 394806639}
   - {fileID: 1399500564}
@@ -20437,7 +20437,7 @@ GameObject:
   - component: {fileID: 1502691445}
   - component: {fileID: 1502691444}
   m_Layer: 5
-  m_Name: Wisdom
+  m_Name: Mage Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20483,7 +20483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 175fd7c62e5d0d349ad17f0b37b14673, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dde7ce60a86bc214eb11c8235d576793, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23207,7 +23207,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
