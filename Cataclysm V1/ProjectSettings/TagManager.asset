@@ -11,6 +11,8 @@ TagManager:
   - Teleporter
   - StarvedAgent
   - StarvedLight
+  - correctIngredient
+  - wrongIngredient
   layers:
   - Default
   - TransparentFX

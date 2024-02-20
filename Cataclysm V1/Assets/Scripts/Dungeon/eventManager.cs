@@ -289,6 +289,8 @@ public class eventManager : MonoBehaviour
                     }
                 }
 
+
+
                 else if (hitInfoClose.transform.gameObject.tag == "DoorPortal")
                 {
                     GameObject door = hitInfoClose.transform.gameObject;

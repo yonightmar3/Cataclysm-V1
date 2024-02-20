@@ -14,6 +14,7 @@ public class BookInteraction : MonoBehaviour
     public GameObject wisdomBook;
     public GameObject soulBook;
     public GameObject fateBook;
+    [SerializeField] private GameObject alchemyRiddle;
 
 
     void Update()
@@ -116,6 +117,29 @@ public class BookInteraction : MonoBehaviour
                             InputManager.disabled = false;
                             readingBackground.SetActive(false);
                             fateBook.SetActive(false);
+                            pickUpText.SetActive(true);
+                        }
+                    }
+                }
+                else if (lookingAtClose.name == "Alchemy Riddle")
+                {
+                    pickUpText.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        isBookOpen = !isBookOpen;
+
+                        if (isBookOpen)
+                        {
+                            InputManager.disabled = true;
+                            readingBackground.SetActive(true);
+                            alchemyRiddle.SetActive(true);
+                            pickUpText.SetActive(false);
+                        }
+                        else
+                        {
+                            InputManager.disabled = false;
+                            readingBackground.SetActive(false);
+                            alchemyRiddle.SetActive(false);
                             pickUpText.SetActive(true);
                         }
                     }
