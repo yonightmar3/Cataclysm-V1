@@ -66,6 +66,12 @@ public class mazeActions : MonoBehaviour
                     collapse1.SetActive(false);
                     collapse1Sound.SetActive(true);
                 }
+                if (mazeDweller.jumpscare)
+                {
+                    mazeDwellerAnimator.SetTrigger("jumpscare");
+                    Debug.Log("jumpscare");
+                    mazeDwellerAnimator.ResetTrigger("playerSeen");
+                }
                 if (lookingAtFar.name == "mazeTrigger2")
                 {
                     Debug.Log("transfer works");
