@@ -15,8 +15,8 @@ Material:
   - _USEDITHERING_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -63,7 +63,7 @@ Material:
     - _FoliageDitherMax: 6
     - _FoliageDitherMin: 1
     - _FoliageRenderDistance: 17.79
-    - _FoliageRoughness: 1
+    - _FoliageRoughness: 0.797
     - _InteractionAlpha: 1
     - _LockPositionGradient: 0.49
     - _MaskClip: 0.5
@@ -88,9 +88,9 @@ Material:
     - _WindNoiseSmallMultiply: -0.37
     - __dirty: 1
     m_Colors:
-    - _ColorBottom: {r: 0.51526594, g: 0.5283019, b: 0, a: 1}
-    - _ColorTop: {r: 0.26251915, g: 0.31132078, b: 0, a: 1}
-    - _ColorTopVariation: {r: 0.29107225, g: 0.4339623, b: 0, a: 1}
+    - _ColorBottom: {r: 0.097551174, g: 0.764151, b: 0, a: 1}
+    - _ColorTop: {r: 0, g: 0.7830189, b: 0, a: 1}
+    - _ColorTopVariation: {r: 0.107185856, g: 0.8396226, b: 0, a: 1}
     - _ColorWave: {r: 0.21823503, g: 0.4056604, b: 0, a: 1}
     - _WaveSpeed: {r: 0.122641504, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
