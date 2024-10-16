@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class forestMonsterA : monsterAgent
 {
-    [SerializeField] private Animator monsterA;
+    [SerializeField] private Animator monster;
 
     private void Update()
     {
@@ -12,9 +12,9 @@ public class forestMonsterA : monsterAgent
 
         if (moving)
         {
-            monsterA.SetTrigger("moving");
+            monster.SetTrigger("moving");
         }
-        else monsterA.SetTrigger("stopped");
+        else monster.SetTrigger("stopped");
         
     }
 }
