@@ -93,8 +93,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907331764356070492}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 1.27
   m_Height: 42.77623
   m_Direction: 1
@@ -191,8 +200,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3573063991753200479}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 1.27
   m_Height: 42.77623
   m_Direction: 1
@@ -248,23 +266,23 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.59751135
+  - screenRelativeHeight: 0.8264883
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 868746463298921303}
-  - screenRelativeHeight: 0.40072978
+  - screenRelativeHeight: 0.62296724
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7440697414121893371}
-  - screenRelativeHeight: 0.25502792
+  - screenRelativeHeight: 0.45661247
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1603963273974129644}
-  - screenRelativeHeight: 0.14983526
+  - screenRelativeHeight: 0.32074636
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 6426864560543105939}
-  - screenRelativeHeight: 0.01892195
+  - screenRelativeHeight: 0.23860613
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5937785321971778238}
@@ -362,8 +380,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5254487786950642609}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 1.27
   m_Height: 42.77623
   m_Direction: 1
@@ -461,8 +488,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5458853551943048840}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 1.27
   m_Height: 42.77623
   m_Direction: 1
@@ -560,8 +596,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7192247141271936430}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 1.27
   m_Height: 42.77623
   m_Direction: 1
