@@ -526,6 +526,7 @@ public class monsterAgent : MonoBehaviour
             // Trigger the jumpscare animation
             monsterAnimator.SetTrigger("Jumpscare");
 
+
             // Start coroutine to handle death and reset after jumpscare
             StartCoroutine(HandleDeathAfterJumpscare());
         }
