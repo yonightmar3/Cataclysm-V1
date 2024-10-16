@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 055d3fd7bd3901042a44bb13f3160e0e, type: 3}
       propertyPath: m_Name
-      value: Creep_mesh Variant
+      value: ForestMonsterPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 1630794972795428178, guid: 055d3fd7bd3901042a44bb13f3160e0e, type: 3}
       propertyPath: m_Materials.Array.data[0]

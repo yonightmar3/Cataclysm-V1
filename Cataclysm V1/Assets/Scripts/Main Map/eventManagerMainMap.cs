@@ -236,6 +236,7 @@ public class eventManagerMainMap : MonoBehaviour
         }
     }
 
+
     IEnumerator GabrielSequence()
     {
         InputManager.disabled = true;

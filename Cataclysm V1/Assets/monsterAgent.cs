@@ -515,7 +515,7 @@ public class monsterAgent : MonoBehaviour
         moving = false;
 
         // Trigger the jumpscare when reaching the player
-        
+
     }
 
     private void TriggerJumpscare()
@@ -535,7 +535,7 @@ public class monsterAgent : MonoBehaviour
     private IEnumerator HandleDeathAfterJumpscare()
     {
         // Wait for the full duration of the jumpscare animation
-        yield return new WaitForSeconds(3f); // Ensure this matches your jumpscare animation length
+        yield return new WaitForSeconds(2f); // Ensure this matches your jumpscare animation length
 
         // Mark player as dead (optional: trigger death UI or respawn system here)
         playerActions.dead = true;
@@ -591,6 +591,7 @@ public class monsterAgent : MonoBehaviour
         }
     }
 }
+
 
 
 
