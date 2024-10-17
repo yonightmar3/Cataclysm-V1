@@ -13,6 +13,7 @@ TagManager:
   - StarvedLight
   - correctIngredient
   - wrongIngredient
+  - Forest Monster
   layers:
   - Default
   - TransparentFX
