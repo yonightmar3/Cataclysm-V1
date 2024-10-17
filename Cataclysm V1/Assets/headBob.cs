@@ -12,21 +12,17 @@ public class headBob : MonoBehaviour
 
     private float bobTimer = 0f;
     private Vector3 originalCameraPosition;
-    private CharacterController characterController;
 
     void Start()
     {
         // Store the original position of the camera
         originalCameraPosition = transform.localPosition;
-
-        // Get the CharacterController (or other movement controller) on the player
-        characterController = GetComponentInParent<CharacterController>();
     }
 
     void Update()
     {
-        // Check if the player is moving
-        if (characterController != null && characterController.velocity.magnitude > 0.1f && characterController.isGrounded)
+        // Check if the player is moving using input from the Input Manager
+        if (IsPlayerMoving())
         {
             // If moving, apply the head bob effect
             BobCamera();
@@ -36,6 +32,16 @@ public class headBob : MonoBehaviour
             // If not moving, smoothly return the camera to its original position
             ResetCameraPosition();
         }
+    }
+
+    bool IsPlayerMoving()
+    {
+        // Check if any movement input is detected
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // If there's significant movement input, return true
+        return Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f;
     }
 
     void BobCamera()
