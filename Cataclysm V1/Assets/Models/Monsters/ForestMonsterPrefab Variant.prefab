@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 644027315288576174, guid: 439cc6826fe365b46bcc4a1731f29038, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6030729403259851650, guid: 439cc6826fe365b46bcc4a1731f29038, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -55,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 6411618285179029816, guid: 439cc6826fe365b46bcc4a1731f29038, type: 3}
       propertyPath: m_Name
       value: ForestMonsterPrefab Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411618285179029816, guid: 439cc6826fe365b46bcc4a1731f29038, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

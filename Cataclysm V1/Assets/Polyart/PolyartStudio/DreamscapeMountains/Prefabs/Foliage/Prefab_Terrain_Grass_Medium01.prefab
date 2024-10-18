@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6675088374801053609}
   - component: {fileID: 1175052050301540374}
   - component: {fileID: 3631424444242877816}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Prefab_Terrain_Grass_Medium01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
