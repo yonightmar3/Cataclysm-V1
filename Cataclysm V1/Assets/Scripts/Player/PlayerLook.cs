@@ -145,7 +145,7 @@ public class PlayerLook : MonoBehaviour
 
     IEnumerator lightOut()
     {
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.2f);
         lightOrb.SetActive(true);
     }
 
